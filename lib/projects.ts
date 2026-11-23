@@ -44,7 +44,7 @@ export const PROJECTS: Project[] = [
       axiomsApplied: [
         "AI reads/proposes: LLM surfaces places and preferences.",
         "Rules decide: Dynamic programming calculates optimal route and timing.",
-        "Zero hallucination: All opening hours and travel distances verified via PostGIS.",
+        "Grounded data: opening hours and travel distances come from PostGIS, not the model.",
       ],
       results:
         "Cut estimated prompt tokens by 71%. All benchmark trips produced valid plans with zero repair calls. Built backend in FastAPI and PostGIS, maintaining 949 automated regression tests.",
@@ -99,10 +99,10 @@ export const PROJECTS: Project[] = [
     keyMetrics: [
       { label: "Calibrated Coverage", value: "91–92%" },
       { label: "Under-Covered Cut", value: "23 → 7 Engines" },
-      { label: "Peer Review", value: "J. Reliab. Sci. Eng. (IOP)" },
+      { label: "Status", value: "Part I under review" },
     ],
     stack: ["Conformal Prediction", "CQR", "Quantile Regression", "PyTorch", "Statistical Design"],
-    githubUrl: "https://github.com/HemanthDadi1/fdo04-degradation-aware-rul",
+    githubUrl: "https://github.com/HemanthDadi1/fd004-degradation-aware-rul",
     deepDive: {
       problem:
         "Pooled conformal prediction coverage conceals severe individual unit failures: an 82% pooled coverage metric hid the fact that 10 out of 24 test engines fell far below target (worst engine at 45%).",
@@ -110,10 +110,10 @@ export const PROJECTS: Project[] = [
         "Designed a calibration rule applied engine-by-engine (Balanced Engine CQR) evaluated on NASA C-MAPSS FD004 across 5 random seeds with leakage-safe splits.",
       axiomsApplied: [
         "Rigorous verification: Audited earlier results, reported corrected estimates.",
-        "Calibrated bounds: Probabilistic predictions bounded by statistical guarantees.",
+        "Calibrated bounds: Calibrated intervals, with coverage measured engine by engine.",
       ],
       results:
-        "Maintained 91–92% coverage across operating shifts, reducing under-covered engines from 23 down to 7. Two manuscripts submitted/in preparation for the Journal of Reliability Science and Engineering (IOP).",
+        "Maintained 91–92% coverage across operating shifts, reducing under-covered engines from 23 down to 7. Two manuscripts: Part I is under review and Part II is in preparation.",
     },
   },
   {
@@ -125,9 +125,9 @@ export const PROJECTS: Project[] = [
     summary:
       "AI-powered EU CBAM trade compliance & verified sovereign carbon ledger for Indian steel and fastener exporters facing EU tariff liabilities.",
     keyMetrics: [
-      { label: "Emissions Drop", value: "-59% (4.38 → 2.254)" },
-      { label: "Tariff Saved", value: "€849,075 / 1,000t" },
-      { label: "Math Engine", value: "100% Annex V Math" },
+      { label: "Sample Plant", value: "4.38 → 2.25 tCO₂/t" },
+      { label: "Tests", value: "12 suites passing" },
+      { label: "Math Engine", value: "Deterministic, unit-tested" },
     ],
     stack: ["Next.js", "Python / Pyodide Wasm", "Gemini Multimodal", "GCP asia-south1", "FastAPI"],
     externalUrl: "https://cimex-compliance.vercel.app",
@@ -139,11 +139,11 @@ export const PROJECTS: Project[] = [
         "Multimodal PDF parsing for mill test certificates, routed through a human officer verification gate, feeding into an isolated deterministic Python stoichiometric engine.",
       axiomsApplied: [
         "AI reads: Multimodal vision parses messy mill reports.",
-        "People confirm: Customs compliance officer holds cryptographic sign-off.",
+        "People confirm: A plant clerk confirms every extracted value, logged in an audit trail.",
         "Rules decide: Exact Annex V stoichiometry calculates carbon and tariff fees.",
       ],
       results:
-        "Enables Indian steel exporters to verify actual scrap EAF emission levels, saving €849,075 per 1,000t export batch with 100% auditable ledgers.",
+        "Enables Indian steel exporters to verify actual scrap EAF emission levels, cutting estimated emissions on a sample plant from 4.38 to 2.25 tCO₂/t. A modelled estimate puts the avoided EU liability near €849K per 1,000 t of exports over the 2026–2034 phase-in.",
     },
   },
   {
@@ -153,11 +153,11 @@ export const PROJECTS: Project[] = [
     period: "Oct – Nov 2026",
     category: "Enterprise Systems",
     summary:
-      "Designed a verified customer support pipeline that executes 5 automated safety and grounding checks, automating 16% of high-confidence tickets with zero private-data leaks.",
+      "Designed a verified customer support pipeline that executes 5 automated safety and grounding checks, automating 16% of high-confidence tickets with no private-data answers in validation runs.",
     keyMetrics: [
       { label: "Grounding Accuracy", value: "95.0%" },
       { label: "Safety Pipeline", value: "5 Grounding Checks" },
-      { label: "Private Data Leaks", value: "0% Breaches" },
+      { label: "Private-Data Answers", value: "0 in validation runs" },
     ],
     stack: ["LLM Workflows", "Grouped Cross-Validation", "Fairness Auditing", "Python", "FastAPI"],
     githubUrl: "https://github.com/HemanthDadi1",
@@ -167,11 +167,11 @@ export const PROJECTS: Project[] = [
       architecture:
         "Reframed the chatbot request as a deterministic service-delivery problem. Built a pipeline that responds only after 5 strict safety checks and routes everything else to human agents.",
       axiomsApplied: [
-        "Safety over volume: Chose 16% automation target with 0% data leaks.",
+        "Safety over volume: Chose safety over volume: 16% automated against a 65% target.",
         "Fairness auditing: Audited and closed performance gaps for non-fluent customers.",
       ],
       results:
-        "Reached 95% topic accuracy on unseen phrasing, with zero private data leaks across 500+ production tickets.",
+        "Reached 95% topic accuracy on unseen phrasing, with no private-data answers in any validation run (a simulated client, not production traffic).",
     },
   },
 ];

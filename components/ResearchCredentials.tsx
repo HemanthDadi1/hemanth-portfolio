@@ -9,7 +9,7 @@ export default function ResearchCredentials() {
       <div className="space-y-2 mb-12">
         <div className="flex items-center space-x-2 text-xs font-mono text-[#00F0FF]">
           <span className="w-1.5 h-1.5 rounded-full bg-[#00F0FF]" />
-          <span>05. CREDENTIALS & PEER-REVIEWED RESEARCH</span>
+          <span>05. CREDENTIALS & RESEARCH</span>
         </div>
         <h2 className="text-3xl font-sans font-bold text-white tracking-tight">
           Scientific Rigor & Mechanical Engineering Core
@@ -41,7 +41,7 @@ export default function ResearchCredentials() {
               <strong>Hemanth Dadi.</strong> Submitted to the <em>Journal of Reliability Science and Engineering</em>. Analyzes unit-level conformal prediction coverage failures in complex multi-operating regimes and proposes Balanced Engine CQR.
             </p>
             <div className="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
-              <span>Code: github.com/HemanthDadi1/fdo04-degradation-aware-rul</span>
+              <span>Code: github.com/HemanthDadi1/fd004-degradation-aware-rul</span>
               <span className="text-[#00F0FF]">Five-Seed Validated</span>
             </div>
           </div>

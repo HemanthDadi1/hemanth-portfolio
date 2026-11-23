@@ -27,7 +27,7 @@ export default function MammutHero() {
             Architecting <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2F6BFF] via-[#F5EFE6] to-[#D8CBB3]">Deterministic AI</span> for Heavy Industry.
           </h1>
           <p className="text-sm sm:text-lg lg:text-xl text-[#D8CBB3] font-normal leading-relaxed max-w-4xl">
-            I engineer zero-hallucination inference pipelines, mathematical operations research, and sovereign human-verified systems for physical manufacturing, supply chains, and travel.
+            I engineer grounded inference pipelines, mathematical operations research, and sovereign human-verified systems for physical manufacturing, supply chains, and travel.
           </p>
         </div>
       </div>
@@ -44,11 +44,11 @@ export default function MammutHero() {
         </div>
 
         <div className="p-4 sm:p-5 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-1.5 hover:border-[#2F6BFF]/60 hover:shadow-[0_10px_30px_rgba(47,107,255,0.12)] transition-all">
-          <div className="text-[10px] text-[#A39985] uppercase tracking-wider">Peer-Reviewed Research</div>
+          <div className="text-[10px] text-[#A39985] uppercase tracking-wider">Research Under Review</div>
           <div className="text-base sm:text-lg font-display font-bold text-[#F5EFE6]">Conformal UQ (CQR)</div>
-          <div className="text-xs sm:text-sm text-[#D8CBB3] font-semibold">NASA C-MAPSS / IOP 2026</div>
+          <div className="text-xs sm:text-sm text-[#D8CBB3] font-semibold">NASA C-MAPSS FD004 / 2026</div>
           <p className="text-xs text-[#A39985] font-sans pt-0.5">
-            Engine-level statistical coverage guarantees under severe operating shifts.
+            Engine-level conformal coverage, measured under severe operating shifts.
           </p>
         </div>
 
@@ -57,7 +57,7 @@ export default function MammutHero() {
           <div className="text-base sm:text-lg font-display font-bold text-[#F5EFE6]">CImEx Compliance</div>
           <div className="text-xs sm:text-sm text-[#D8CBB3] font-semibold">EU CBAM Sovereign Ledger</div>
           <p className="text-xs text-[#A39985] font-sans pt-0.5">
-            Saved €849,075 per 1,000t steel batch using 100% deterministic Annex V math.
+            On a sample plant, verified supplier data cut estimated emissions from 4.38 to 2.25 tCO₂/t.
           </p>
         </div>
       </div>

@@ -169,7 +169,7 @@ export default function CBAMCalculator() {
           <Info className="w-3 h-3 text-[#2F6BFF]" />
           <span>Formula: Specific Embedded Carbon (Annex V, Reg 2023/956) × (Factor - 1.340) × €{etsPrice}</span>
         </span>
-        <span className="text-[#2F6BFF]">Zero Hallucinations Verified</span>
+        <span className="text-[#2F6BFF]">Deterministic math, unit-tested</span>
       </div>
     </div>
   );

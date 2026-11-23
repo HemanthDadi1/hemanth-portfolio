@@ -73,7 +73,7 @@ export default function Footer() {
           <div className="flex items-center space-x-3">
             <span className="text-[#2F6BFF]">LATENCY: 14ms</span>
             <span>&bull;</span>
-            <span>ZERO HALLUCINATIONS VERIFIED</span>
+            <span>DETERMINISTIC MATH // UNIT-TESTED</span>
           </div>
         </div>
       </div>

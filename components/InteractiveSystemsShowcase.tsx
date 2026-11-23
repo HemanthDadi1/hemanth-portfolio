@@ -252,7 +252,7 @@ export default function InteractiveSystemsShowcase() {
                     </div>
                     <div className="pt-2.5 text-[11px] text-[#A39985] flex justify-between border-t border-[rgba(216,203,179,0.08)]">
                       <span>Deterministic Math</span>
-                      <span className="text-[#2F6BFF]">Zero Hallucination</span>
+                      <span className="text-[#2F6BFF]">Verified Inputs</span>
                     </div>
                   </div>
                 </div>
