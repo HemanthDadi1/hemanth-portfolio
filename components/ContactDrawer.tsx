@@ -71,12 +71,14 @@ export default function ContactDrawer() {
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-emerald-400" />
                 <div>
-                  <div className="text-[10px] text-slate-400">TELEPHONE / WHATSAPP</div>
+                  <div className="text-[10px] text-slate-400">WHATSAPP DIRECT</div>
                   <a
-                    href="tel:+917780370182"
+                    href="https://wa.me/917780370182"
+                    target="_blank"
+                    rel="noreferrer"
                     className="text-white hover:text-emerald-400 transition-colors"
                   >
-                    +91 7780370182
+                    hemanth_dadi ↗
                   </a>
                 </div>
               </div>

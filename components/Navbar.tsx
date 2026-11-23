@@ -63,31 +63,31 @@ export default function Navbar() {
             href="#thesis"
             className="px-3 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#262623] rounded transition-all"
           >
-            <span className="text-[#2F6BFF] mr-1">01.</span>THESIS
+            THESIS
           </a>
           <a
             href="#flagship"
             className="px-3 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#262623] rounded transition-all"
           >
-            <span className="text-[#2F6BFF] mr-1">02.</span>CIMEX
+            CIMEX
           </a>
           <a
             href="#deployments"
             className="px-3 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#262623] rounded transition-all"
           >
-            <span className="text-[#2F6BFF] mr-1">03.</span>DEPLOYMENTS
+            DEPLOYMENTS
           </a>
           <a
             href="#architecture"
             className="px-3 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#262623] rounded transition-all"
           >
-            <span className="text-[#2F6BFF] mr-1">04.</span>ARCHITECTURE
+            ARCHITECTURE
           </a>
           <a
             href="#research"
             className="px-3 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#262623] rounded transition-all"
           >
-            <span className="text-[#2F6BFF] mr-1">05.</span>RESEARCH
+            RESEARCH
           </a>
         </nav>
 
@@ -144,35 +144,35 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(false)}
             className="block py-1 text-[#D8CBB3] hover:text-[#2F6BFF]"
           >
-            01. THESIS
+            THESIS
           </a>
           <a
             href="#flagship"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-1 text-[#D8CBB3] hover:text-[#2F6BFF]"
           >
-            02. CIMEX COMPLIANCE
+            CIMEX COMPLIANCE
           </a>
           <a
             href="#deployments"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-1 text-[#D8CBB3] hover:text-[#2F6BFF]"
           >
-            03. DEPLOYMENTS
+            DEPLOYMENTS
           </a>
           <a
             href="#architecture"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-1 text-[#D8CBB3] hover:text-[#2F6BFF]"
           >
-            04. ARCHITECTURE
+            ARCHITECTURE
           </a>
           <a
             href="#research"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-1 text-[#D8CBB3] hover:text-[#2F6BFF]"
           >
-            05. RESEARCH & PAPERS
+            RESEARCH & PAPERS
           </a>
           <a
             href="#contact"

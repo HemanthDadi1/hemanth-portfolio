@@ -50,9 +50,9 @@ export default function DirectContactSection() {
 
             <div className="p-3 rounded bg-[#242421] border border-[rgba(216,203,179,0.14)] flex items-center justify-between">
               <div>
-                <div className="text-[10px] text-[#AFA38C]">PHONE / WHATSAPP</div>
-                <a href="tel:+917780370182" className="text-[#EFE8DC] hover:text-[#2F6BFF]">
-                  +91 7780370182
+                <div className="text-[10px] text-[#AFA38C]">WHATSAPP DIRECT</div>
+                <a href="https://wa.me/917780370182" target="_blank" rel="noreferrer" className="text-[#EFE8DC] hover:text-[#2F6BFF]">
+                  hemanth_dadi ↗
                 </a>
               </div>
               <span className="text-[#2F6BFF] text-[10px]">ACTIVE</span>

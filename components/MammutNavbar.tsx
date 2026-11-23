@@ -39,37 +39,37 @@ export default function MammutNavbar() {
             href="#hero"
             className="px-2.5 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#181A20] rounded-lg transition-all"
           >
-            01. HERO
+            HERO
           </a>
           <a
             href="#thesis"
             className="px-2.5 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#181A20] rounded-lg transition-all"
           >
-            02. THESIS
+            THESIS
           </a>
           <a
             href="#work"
             className="px-2.5 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#181A20] rounded-lg transition-all"
           >
-            03. WORK
+            WORK
           </a>
           <a
             href="#capabilities"
             className="px-2.5 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#181A20] rounded-lg transition-all"
           >
-            04. ARCHITECTURE
+            ARCHITECTURE
           </a>
           <a
             href="#research"
             className="px-2.5 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#181A20] rounded-lg transition-all"
           >
-            05. RESEARCH
+            RESEARCH
           </a>
           <a
             href="#contact"
             className="px-2.5 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#181A20] rounded-lg transition-all"
           >
-            06. CONTACT
+            CONTACT
           </a>
         </nav>
 

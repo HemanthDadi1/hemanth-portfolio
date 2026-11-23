@@ -56,9 +56,15 @@ export default function MammutContactSection() {
 
             <div className="p-4 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] flex items-center justify-between hover:border-[#2F6BFF]/40 transition-colors">
               <div>
-                <div className="text-[11px] text-[#A39985]">TELEPHONE / WHATSAPP</div>
-                <a href="tel:+917780370182" className="text-sm text-[#F5EFE6] hover:text-[#2F6BFF] font-semibold">
-                  +91 7780370182
+                <div className="text-[11px] text-[#A39985]">WHATSAPP DIRECT</div>
+                <a
+                  href="https://wa.me/917780370182"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm text-[#F5EFE6] hover:text-[#2F6BFF] font-semibold flex items-center space-x-1"
+                >
+                  <span>hemanth_dadi</span>
+                  <span className="text-xs text-[#2F6BFF]">↗</span>
                 </a>
               </div>
               <span className="text-[#2F6BFF] text-xs font-semibold bg-[#2F6BFF]/10 px-2 py-0.5 rounded border border-[#2F6BFF]/30">ACTIVE</span>

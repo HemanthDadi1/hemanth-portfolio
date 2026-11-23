@@ -3,12 +3,12 @@
 import React, { useEffect, useState } from "react";
 
 const BLOCKS = [
-  { id: "hero", label: "01. HERO" },
-  { id: "thesis", label: "02. THESIS" },
-  { id: "work", label: "03. WORK" },
-  { id: "capabilities", label: "04. ARCHITECTURE" },
-  { id: "research", label: "05. RESEARCH" },
-  { id: "contact", label: "06. CONTACT" },
+  { id: "hero", label: "HERO" },
+  { id: "thesis", label: "THESIS" },
+  { id: "work", label: "WORK" },
+  { id: "capabilities", label: "ARCHITECTURE" },
+  { id: "research", label: "RESEARCH" },
+  { id: "contact", label: "CONTACT" },
 ];
 
 export default function ScrollHudRail() {

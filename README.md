@@ -42,7 +42,7 @@ Designed in the **Mammut Studios Editorial Aesthetic** with full-page viewport s
    - Academic pedigree: Stevens Institute of Technology (M.S. Data Science, GPA 3.73), IIT Roorkee, and VRSEC.
 
 8. **Page 06: Founder Transmission & Contact Desk (`components/MammutContactSection.tsx`)**:
-   - Direct transmission dispatch box, direct email (`hemanthdadi3@gmail.com`), phone/WhatsApp (`+91 7780370182`), LinkedIn, and GitHub links.
+   - Direct transmission dispatch box, direct email (`hemanthdadi3@gmail.com`), WhatsApp (`hemanth_dadi`), LinkedIn, and GitHub links.
 
 ---
 
