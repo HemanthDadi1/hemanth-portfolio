@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 
 export default function MammutContactSection() {
   const [copied, setCopied] = useState(false);
@@ -89,6 +90,26 @@ export default function MammutContactSection() {
                 GitHub Repos ↗
               </a>
             </div>
+
+            {/* Featured QR Code / Digital Card Link */}
+            <Link
+              href="/connect"
+              className="p-3.5 rounded-xl bg-[#101114] border border-[#2F6BFF]/40 hover:border-[#2F6BFF] flex items-center justify-between transition-all group cursor-pointer shadow-[0_0_15px_rgba(47,107,255,0.15)]"
+            >
+              <div className="flex items-center space-x-3">
+                <div className="w-9 h-9 rounded-lg bg-white p-1 flex items-center justify-center shrink-0">
+                  <img src="/qr/hemanth_connect_qr.png" alt="QR" className="w-full h-full object-contain" />
+                </div>
+                <div className="text-left">
+                  <div className="text-[#F5EFE6] font-semibold text-xs group-hover:text-[#2F6BFF] transition-colors flex items-center space-x-1.5">
+                    <span>DIGITAL CARD & QR CODE</span>
+                    <span className="text-[10px] text-[#10B981] bg-[#10B981]/15 px-1.5 py-0.5 rounded border border-[#10B981]/30">SCAN</span>
+                  </div>
+                  <div className="text-[10px] text-[#A39985]">Portfolio, LinkedIn & WhatsApp in 1 scan</div>
+                </div>
+              </div>
+              <span className="text-sm text-[#2F6BFF]">→</span>
+            </Link>
           </div>
         </div>
 

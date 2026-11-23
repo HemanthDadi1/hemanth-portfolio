@@ -97,6 +97,14 @@ export default function MammutNavbar() {
             </span>
             <span className="sm:hidden">{copied ? "COPIED" : "EMAIL"}</span>
           </button>
+          <Link
+            href="/connect"
+            className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-[#181A20] border border-[rgba(216,203,179,0.18)] hover:border-[#2F6BFF] text-xs font-mono text-[#D8CBB3] hover:text-[#2F6BFF] transition-all"
+            title="Scan QR Code / Digital Card"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse"></span>
+            <span>QR</span>
+          </Link>
           <a
             href="#contact"
             className="hidden sm:flex items-center space-x-1 px-3.5 py-1.5 rounded-lg bg-[#2F6BFF] hover:bg-[#4D82FF] text-white text-xs font-mono font-medium transition-all shadow-[0_0_15px_rgba(47,107,255,0.35)]"
