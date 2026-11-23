@@ -36,7 +36,7 @@ export default function ResearchSection() {
               Engine-Level Reliability of Conformal RUL Uncertainty Under Operating-Condition Distribution Shift in C-MAPSS FD004 (Part I)
             </h3>
             <p className="text-xs text-[#AFA38C]">
-              <strong>Hemanth Dadi.</strong> Submitted to the <em>Journal of Reliability Science and Engineering</em>. Code: github.com/HemanthDadi1/fdo04-degradation-aware-rul
+              <strong>Hemanth Dadi.</strong> Submitted to the <em>Journal of Reliability Science and Engineering</em>. Code: github.com/HemanthDadi1/fd004-degradation-aware-rul
             </p>
           </div>
 

@@ -45,7 +45,7 @@ export default function MammutThesisBlock() {
 
         <div className="flex items-center space-x-3 shrink-0 font-mono text-xs">
           <span className="px-3 py-1.5 rounded-lg bg-[#101114] text-[#D8CBB3] border border-[rgba(216,203,179,0.12)]">
-            ZERO HALLUCINATION
+            GROUNDED OUTPUTS
           </span>
           <span className="px-3 py-1.5 rounded-lg bg-[#2F6BFF]/15 text-[#2F6BFF] border border-[#2F6BFF]/30 font-semibold">
             SOVEREIGN LEDGERS
@@ -59,7 +59,7 @@ export default function MammutThesisBlock() {
           <div className="text-[#2F6BFF] font-bold text-xs">01. AI READS</div>
           <h3 className="text-sm sm:text-base font-display font-bold text-[#F5EFE6]">Multimodal Vision Schemas</h3>
           <p className="font-sans text-xs text-[#D8CBB3] leading-relaxed">
-            Extracts unstructured mill certificates, receipts, and bills into strictly typed Pydantic models with zero hallucination.
+            Extracts unstructured mill certificates, receipts, and bills into strictly typed Pydantic models with schema validation.
           </p>
           <div className="pt-1.5 text-[10px] text-[#A39985] border-t border-[rgba(216,203,179,0.08)]">
             Gemini Multimodal • Pydantic • OCR Ingestion
@@ -104,7 +104,7 @@ export default function MammutThesisBlock() {
         <div className="flex items-center space-x-3 text-[#A39985]">
           <span>PAGE 02 / 06</span>
           <span className="text-[rgba(216,203,179,0.3)]">//</span>
-          <span>ZERO-HALLUCINATION AXIOM</span>
+          <span>CORE AXIOM</span>
           <span className="text-[rgba(216,203,179,0.3)]">//</span>
           <button
             onClick={() => scrollTo("work")}

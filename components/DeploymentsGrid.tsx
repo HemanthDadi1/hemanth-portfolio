@@ -33,10 +33,10 @@ export default function DeploymentsGrid() {
       metrics: [
         { label: "Calibrated Coverage", value: "91–92%" },
         { label: "Under-Covered Cut", value: "23 → 7 engines" },
-        { label: "Peer Review", value: "J. Reliab. Sci. Eng. (IOP)" },
+        { label: "Status", value: "Part I under review" },
       ],
       tags: ["Conformal Prediction", "CQR", "Quantile Regression", "Distribution Shift", "PyTorch"],
-      github: "https://github.com/HemanthDadi1/fdo04-degradation-aware-rul",
+      github: "https://github.com/HemanthDadi1/fd004-degradation-aware-rul",
       icon: ShieldCheck,
     },
     {
@@ -59,13 +59,13 @@ export default function DeploymentsGrid() {
       id: "cloudserve",
       title: "CloudServe Verified AI Copilot",
       category: "industrial",
-      subtitle: "IIT Roorkee Capstone // Zero-Leakage Architecture",
+      subtitle: "IIT Roorkee Capstone // Verification-First Architecture",
       description:
-        "Designed an enterprise support pipeline that executes 5 automated safety and grounding checks before dispatch. Reached 95% topic accuracy on unseen customer phrasing, choosing strict safety over volume with 0 private data leaks across 500+ production tickets.",
+        "Designed an enterprise support pipeline that executes 5 automated safety and grounding checks before dispatch. Reached 95% topic accuracy on unseen customer phrasing, choosing strict safety over volume with no private-data answers in any validation run.",
       metrics: [
         { label: "Grounding Accuracy", value: "95.0%" },
         { label: "Safety Checks", value: "5-Stage Pipeline" },
-        { label: "Data Leakage", value: "0% (Zero Breaches)" },
+        { label: "Private-Data Answers", value: "0 in validation runs" },
       ],
       tags: ["LLM Workflows", "Fairness Auditing", "Grounding", "FastAPI", "Enterprise Security"],
       github: "https://github.com/HemanthDadi1",

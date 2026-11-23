@@ -14,7 +14,7 @@ const CAPABILITIES: CapabilityItem[] = [
     id: "01",
     title: "Multimodal Vision-to-ERP Ingestion",
     description:
-      "Transforming unstructured physical-world artifacts—scanned mill test certificates, weighbridge receipts, bill of ladings, and handwritten dispatch records—into strongly typed Pydantic models with zero hallucination. Directly integrating into enterprise SAP FI/CO, Procure-to-Pay (P2P), and PostgreSQL ledgers.",
+      "Transforming unstructured physical-world artifacts—scanned mill test certificates, weighbridge receipts, bill of ladings, and handwritten dispatch records—into strongly typed Pydantic models checked against a schema. Directly integrating into enterprise SAP FI/CO, Procure-to-Pay (P2P), and PostgreSQL ledgers.",
     tags: ["Gemini Multimodal", "Pydantic Schemas", "SAP FI/CO Integration"],
   },
   {
@@ -35,7 +35,7 @@ const CAPABILITIES: CapabilityItem[] = [
     id: "04",
     title: "Calibrated Uncertainty Quantification (UQ)",
     description:
-      "Point predictions fail catastrophically under non-stationary operating shifts. I develop calibrated conformal prediction intervals (CQR) that provide statistical coverage guarantees engine-by-engine, mitigating critical downtime.",
+      "Point predictions fail catastrophically under non-stationary operating shifts. I develop calibrated conformal prediction intervals (CQR) and measure coverage engine by engine, mitigating critical downtime.",
     tags: ["Conformal Prediction (CQR)", "Distribution Shift Modeling", "NASA C-MAPSS FD004"],
   },
 ];
@@ -135,7 +135,7 @@ export default function CapabilitiesAccordion() {
         </div>
 
         <div className="text-[#2F6BFF] font-semibold text-xs">
-          4 PILLARS &bull; 100% MATHEMATICAL VERIFICATION
+          4 PILLARS &bull; UNIT-TESTED MATH
         </div>
       </div>
     </section>

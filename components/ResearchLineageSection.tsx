@@ -27,7 +27,7 @@ export default function ResearchLineageSection() {
         {/* Manuscripts Column */}
         <div className="lg:col-span-7 space-y-3">
           <div className="text-xs font-mono text-[#2F6BFF] uppercase tracking-wider font-semibold">
-            Manuscripts in Peer Review
+            Manuscripts
           </div>
 
           <div className="p-4 sm:p-5 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-2 hover:border-[#2F6BFF]/60 hover:shadow-[0_10px_30px_rgba(47,107,255,0.12)] transition-all">
@@ -38,18 +38,10 @@ export default function ResearchLineageSection() {
               <span className="text-[#A39985] text-xs">IOP Publishing</span>
             </div>
             <h3 className="text-sm sm:text-base font-display font-bold text-[#F5EFE6] leading-snug">
-              Engine-Level Reliability of Conformal RUL Uncertainty Under Operating-Condition Distribution Shift in C-MAPSS FD004 (Part I)
+              Conformal RUL uncertainty under operating-condition shift (Part I)
             </h3>
             <p className="text-xs text-[#D8CBB3] leading-relaxed">
-              <strong>Hemanth Dadi.</strong> Submitted to the <em>Journal of Reliability Science and Engineering</em>. Code repository:{" "}
-              <a
-                href="https://github.com/HemanthDadi1/fdo04-degradation-aware-rul"
-                target="_blank"
-                rel="noreferrer"
-                className="text-[#2F6BFF] hover:underline font-mono"
-              >
-                github.com/HemanthDadi1/fdo04-degradation-aware-rul
-              </a>
+              <strong>Hemanth Dadi.</strong> Submitted to the <em>Journal of Reliability Science and Engineering</em>. Title and code withheld during double-anonymous review.
             </p>
           </div>
 
@@ -64,7 +56,10 @@ export default function ResearchLineageSection() {
               Engine-Level Reliability of Conformal RUL Uncertainty Under Operating Shift (Part II): Does a Longer Temporal Context Help?
             </h3>
             <p className="text-xs text-[#D8CBB3] leading-relaxed">
-              <strong>Hemanth Dadi.</strong> Investigates temporal history context fixing mid-life failures under operational distribution shifts.
+              <strong>Hemanth Dadi.</strong> Investigates temporal history context fixing mid-life failures under operational distribution shifts. Code:{" "}
+              <a href="https://github.com/HemanthDadi1/fd004-degradation-aware-rul" target="_blank" rel="noreferrer" className="text-[#2F6BFF] hover:underline font-mono">
+                github.com/HemanthDadi1/fd004-degradation-aware-rul
+              </a>
             </p>
           </div>
         </div>
@@ -123,7 +118,7 @@ export default function ResearchLineageSection() {
         </div>
 
         <div className="text-[#2F6BFF] font-semibold text-xs">
-          PEER REVIEW: IOP PUBLISHING &bull; NASA C-MAPSS FD004
+          PART I UNDER REVIEW &bull; NASA C-MAPSS FD004
         </div>
       </div>
     </section>

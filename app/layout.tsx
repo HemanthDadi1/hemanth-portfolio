@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Hemanth Dadi — AI Systems Architect",
-    description: "AI reads. People confirm. Rules decide. Zero-hallucination industrial intelligence.",
+    description: "AI reads. People confirm. Rules decide. Grounded, human-verified industrial AI.",
   },
   robots: {
     index: true,
