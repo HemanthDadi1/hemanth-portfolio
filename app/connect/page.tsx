@@ -71,12 +71,6 @@ export default function ConnectPage() {
             </div>
           </div>
 
-          {/* Core Axiom Badge */}
-          <div className="p-3 rounded-xl bg-[#101114] border border-[rgba(216,203,179,0.12)] font-mono text-xs text-[#D8CBB3]">
-            <div className="text-[10px] text-[#2F6BFF] font-semibold uppercase tracking-wider pb-0.5">Core Axiom</div>
-            &ldquo;AI reads. People confirm. Rules decide.&rdquo;
-          </div>
-
           {/* QR Code Presentation Box */}
           <div className="p-5 rounded-2xl bg-[#101114] border border-[rgba(216,203,179,0.14)] space-y-4">
             <div className="flex items-center justify-center space-x-2 font-mono text-xs">
@@ -98,7 +92,7 @@ export default function ConnectPage() {
                     : "bg-[#181A20] text-[#A39985] hover:text-white"
                 }`}
               >
-                Add-to-Contacts vCard
+                Save Contact vCard
               </button>
             </div>
 
@@ -115,12 +109,7 @@ export default function ConnectPage() {
             </div>
 
             <div className="text-xs font-mono text-[#A39985] space-y-1">
-              <p className="text-[#F5EFE6] font-medium">
-                {activeQr === "card"
-                  ? "Scan with any smartphone camera to open this digital executive card"
-                  : "Scan with any smartphone camera to save Hemanth Dadi directly to your phone contacts"}
-              </p>
-              <div className="flex items-center justify-center space-x-3 pt-2">
+              <div className="flex items-center justify-center space-x-3 pt-1">
                 <a
                   href={activeQr === "card" ? "/qr/hemanth_connect_qr.png" : "/qr/hemanth_vcard_qr.png"}
                   download={activeQr === "card" ? "hemanth_dadi_qr.png" : "hemanth_dadi_vcard_qr.png"}
@@ -155,7 +144,7 @@ export default function ConnectPage() {
                 </div>
                 <div>
                   <div className="text-[#F5EFE6] font-bold text-sm group-hover:text-[#2F6BFF] transition-colors">
-                    Official Portfolio & Systems
+                    Official Portfolio
                   </div>
                   <div className="text-[11px] text-[#A39985]">hemanth-portfolio-beryl.vercel.app</div>
                 </div>
@@ -197,9 +186,9 @@ export default function ConnectPage() {
                 </div>
                 <div>
                   <div className="text-[#F5EFE6] font-bold text-sm group-hover:text-[#10B981] transition-colors">
-                    WhatsApp Direct Chat
+                    WhatsApp Direct
                   </div>
-                  <div className="text-[11px] text-[#A39985]">@hemanth_dadi &bull; Fast Founder Response</div>
+                  <div className="text-[11px] text-[#A39985]">@hemanth_dadi</div>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
@@ -219,7 +208,7 @@ export default function ConnectPage() {
                 </div>
                 <div>
                   <div className="text-[#F5EFE6] font-bold text-sm group-hover:text-[#2F6BFF] transition-colors">
-                    Direct Founder Email
+                    Direct Email
                   </div>
                   <div className="text-[11px] text-[#A39985]">hemanthdadi3@gmail.com</div>
                 </div>

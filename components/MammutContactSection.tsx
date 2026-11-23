@@ -105,7 +105,7 @@ export default function MammutContactSection() {
                     <span>DIGITAL CARD & QR CODE</span>
                     <span className="text-[10px] text-[#10B981] bg-[#10B981]/15 px-1.5 py-0.5 rounded border border-[#10B981]/30">SCAN</span>
                   </div>
-                  <div className="text-[10px] text-[#A39985]">Portfolio, LinkedIn & WhatsApp in 1 scan</div>
+                  <div className="text-[10px] text-[#A39985]">hemanth-portfolio-beryl.vercel.app/connect</div>
                 </div>
               </div>
               <span className="text-sm text-[#2F6BFF]">→</span>
