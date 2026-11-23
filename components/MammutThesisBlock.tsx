@@ -12,7 +12,7 @@ export default function MammutThesisBlock() {
   return (
     <section
       id="thesis"
-      className="min-h-screen lg:h-screen lg:max-h-screen w-full flex flex-col justify-between px-4 sm:px-8 max-w-6xl mx-auto snap-start relative box-border pt-20 pb-6 sm:pb-8 border-t border-[rgba(216,203,179,0.08)]"
+      className="min-h-screen lg:h-screen lg:max-h-screen w-full flex flex-col justify-between [&>*:not(:first-child):not(:last-child)]:my-auto px-5 sm:px-10 max-w-7xl mx-auto snap-start relative box-border pt-24 pb-8 sm:pb-10 border-t border-[rgba(216,203,179,0.08)]"
     >
       {/* Top Header */}
       <div className="space-y-1.5 sm:space-y-2">
@@ -61,7 +61,7 @@ export default function MammutThesisBlock() {
           <p className="font-sans text-xs text-[#D8CBB3] leading-relaxed">
             Extracts unstructured mill certificates, receipts, and bills into strictly typed Pydantic models with schema validation.
           </p>
-          <div className="pt-1.5 text-[10px] text-[#A39985] border-t border-[rgba(216,203,179,0.08)]">
+          <div className="pt-1.5 text-[11px] text-[#A39985] border-t border-[rgba(216,203,179,0.08)]">
             Gemini Multimodal • Pydantic • OCR Ingestion
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function MammutThesisBlock() {
           <p className="font-sans text-xs text-[#D8CBB3] leading-relaxed">
             Human officers retain absolute veto before irreversible customs filings. Authenticated with SHA-256 cryptographic audit logs.
           </p>
-          <div className="pt-1.5 text-[10px] text-[#A39985] border-t border-[rgba(216,203,179,0.08)]">
+          <div className="pt-1.5 text-[11px] text-[#A39985] border-t border-[rgba(216,203,179,0.08)]">
             Cryptographic Audits • Sovereign Cloud (asia-south1)
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function MammutThesisBlock() {
           <p className="font-sans text-xs text-[#D8CBB3] leading-relaxed">
             Formulas and scheduling run in isolated Python sandboxes, PuLP MILP, and Wasm dynamic programming—never generative text.
           </p>
-          <div className="pt-1.5 text-[10px] text-[#A39985] border-t border-[rgba(216,203,179,0.08)]">
+          <div className="pt-1.5 text-[11px] text-[#A39985] border-t border-[rgba(216,203,179,0.08)]">
             Exact Math • PuLP MILP • Python Sandboxes
           </div>
         </div>

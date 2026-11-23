@@ -6,7 +6,7 @@ export default function ResearchLineageSection() {
   return (
     <section
       id="research"
-      className="min-h-screen lg:h-screen lg:max-h-screen w-full flex flex-col justify-between px-4 sm:px-8 max-w-6xl mx-auto snap-start relative box-border pt-20 pb-6 sm:pb-8 border-t border-[rgba(216,203,179,0.08)]"
+      className="min-h-screen lg:h-screen lg:max-h-screen w-full flex flex-col justify-between [&>*:not(:first-child):not(:last-child)]:my-auto px-5 sm:px-10 max-w-7xl mx-auto snap-start relative box-border pt-24 pb-8 sm:pb-10 border-t border-[rgba(216,203,179,0.08)]"
     >
       {/* Top Header */}
       <div className="space-y-1.5 sm:space-y-2">
@@ -76,7 +76,7 @@ export default function ResearchLineageSection() {
               <span className="text-[#2F6BFF]">GPA 3.73 / 4.00</span>
             </div>
             <div className="text-xs text-[#D8CBB3]">Stevens Institute of Technology, Hoboken, NJ, USA</div>
-            <div className="text-[10px] text-[#A39985]">Stevens Master&apos;s Scholarship &bull; 2023–2024</div>
+            <div className="text-[11px] text-[#A39985]">Stevens Master&apos;s Scholarship &bull; 2023–2024</div>
           </div>
 
           <div className="p-3.5 sm:p-4 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-1 hover:border-[#2F6BFF]/60 transition-colors">
@@ -85,7 +85,7 @@ export default function ResearchLineageSection() {
               <span className="text-[#2F6BFF]">PG Certificate</span>
             </div>
             <div className="text-xs text-[#D8CBB3]">Indian Institute of Technology Roorkee (IIT Roorkee)</div>
-            <div className="text-[10px] text-[#A39985]">Problem Structuring, AI Governance, LLM Systems &bull; 2026</div>
+            <div className="text-[11px] text-[#A39985]">Problem Structuring, AI Governance, LLM Systems &bull; 2026</div>
           </div>
 
           <div className="p-3.5 sm:p-4 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-1 hover:border-[#2F6BFF]/60 transition-colors">
@@ -94,7 +94,7 @@ export default function ResearchLineageSection() {
               <span className="text-[#2F6BFF]">CGPA 8.71 / 10</span>
             </div>
             <div className="text-xs text-[#D8CBB3]">V. R. Siddhartha Engineering College (Autonomous, JNTUK)</div>
-            <div className="text-[10px] text-[#A39985]">First Class with Distinction &bull; 2018–2022</div>
+            <div className="text-[11px] text-[#A39985]">First Class with Distinction &bull; 2018–2022</div>
           </div>
         </div>
       </div>

@@ -37,6 +37,10 @@ const config: Config = {
           subtle: "rgba(47, 107, 255, 0.12)",
         },
       },
+      fontSize: {
+        xs: ["0.8125rem", "1.25rem"],
+        sm: ["0.9375rem", "1.5rem"],
+      },
       fontFamily: {
         sans: ["var(--font-space-grotesk)", "Inter", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
