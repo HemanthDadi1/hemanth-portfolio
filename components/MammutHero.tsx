@@ -11,7 +11,7 @@ export default function MammutHero() {
   return (
     <section
       id="hero"
-      className="min-h-screen lg:h-screen lg:max-h-screen w-full flex flex-col justify-between px-4 sm:px-8 max-w-6xl mx-auto snap-start relative box-border pt-20 pb-6 sm:pb-8"
+      className="min-h-screen lg:h-screen lg:max-h-screen w-full flex flex-col justify-between [&>*:not(:first-child):not(:last-child)]:my-auto px-5 sm:px-10 max-w-7xl mx-auto snap-start relative box-border pt-24 pb-8 sm:pb-10"
     >
       {/* Top Block: Eyebrow + Large Commanding Headline + Lead Paragraph */}
       <div className="space-y-3 sm:space-y-4">
@@ -35,7 +35,7 @@ export default function MammutHero() {
       {/* Middle Block: 3 Generously Spaced Highlight Pillar Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5 font-mono text-xs my-2 sm:my-3">
         <div className="p-4 sm:p-5 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-1.5 hover:border-[#2F6BFF]/60 hover:shadow-[0_10px_30px_rgba(47,107,255,0.12)] transition-all">
-          <div className="text-[10px] text-[#A39985] uppercase tracking-wider">Active Engagement</div>
+          <div className="text-[11px] text-[#A39985] uppercase tracking-wider">Active Engagement</div>
           <div className="text-base sm:text-lg font-display font-bold text-[#F5EFE6]">Founding AI Engineer</div>
           <div className="text-xs sm:text-sm text-[#2F6BFF] font-semibold">Waylosa (Travel AI Engine)</div>
           <p className="text-xs text-[#A39985] font-sans pt-0.5">
@@ -44,7 +44,7 @@ export default function MammutHero() {
         </div>
 
         <div className="p-4 sm:p-5 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-1.5 hover:border-[#2F6BFF]/60 hover:shadow-[0_10px_30px_rgba(47,107,255,0.12)] transition-all">
-          <div className="text-[10px] text-[#A39985] uppercase tracking-wider">Research Under Review</div>
+          <div className="text-[11px] text-[#A39985] uppercase tracking-wider">Research Under Review</div>
           <div className="text-base sm:text-lg font-display font-bold text-[#F5EFE6]">Conformal UQ (CQR)</div>
           <div className="text-xs sm:text-sm text-[#D8CBB3] font-semibold">NASA C-MAPSS FD004 / 2026</div>
           <p className="text-xs text-[#A39985] font-sans pt-0.5">
@@ -53,7 +53,7 @@ export default function MammutHero() {
         </div>
 
         <div className="p-4 sm:p-5 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-1.5 hover:border-[#2F6BFF]/60 hover:shadow-[0_10px_30px_rgba(47,107,255,0.12)] transition-all">
-          <div className="text-[10px] text-[#A39985] uppercase tracking-wider">Sovereign Build</div>
+          <div className="text-[11px] text-[#A39985] uppercase tracking-wider">Sovereign Build</div>
           <div className="text-base sm:text-lg font-display font-bold text-[#F5EFE6]">CImEx Compliance</div>
           <div className="text-xs sm:text-sm text-[#D8CBB3] font-semibold">EU CBAM Sovereign Ledger</div>
           <p className="text-xs text-[#A39985] font-sans pt-0.5">

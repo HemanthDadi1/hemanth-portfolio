@@ -21,7 +21,7 @@ export default function MammutContactSection() {
   return (
     <section
       id="contact"
-      className="min-h-screen lg:h-screen lg:max-h-screen w-full flex flex-col justify-between px-4 sm:px-8 max-w-6xl mx-auto snap-start relative box-border pt-20 pb-6 sm:pb-8 border-t border-[rgba(216,203,179,0.08)]"
+      className="min-h-screen lg:h-screen lg:max-h-screen w-full flex flex-col justify-between [&>*:not(:first-child):not(:last-child)]:my-auto px-5 sm:px-10 max-w-7xl mx-auto snap-start relative box-border pt-24 pb-8 sm:pb-10 border-t border-[rgba(216,203,179,0.08)]"
     >
       {/* Top Header */}
       <div className="space-y-1.5 sm:space-y-2">
@@ -103,9 +103,9 @@ export default function MammutContactSection() {
                 <div className="text-left">
                   <div className="text-[#F5EFE6] font-semibold text-xs group-hover:text-[#2F6BFF] transition-colors flex items-center space-x-1.5">
                     <span>DIGITAL CARD & QR CODE</span>
-                    <span className="text-[10px] text-[#10B981] bg-[#10B981]/15 px-1.5 py-0.5 rounded border border-[#10B981]/30">SCAN</span>
+                    <span className="text-[11px] text-[#10B981] bg-[#10B981]/15 px-1.5 py-0.5 rounded border border-[#10B981]/30">SCAN</span>
                   </div>
-                  <div className="text-[10px] text-[#A39985]">hemanth-portfolio-beryl.vercel.app/connect</div>
+                  <div className="text-[11px] text-[#A39985]">hemanth-portfolio-beryl.vercel.app/connect</div>
                 </div>
               </div>
               <span className="text-sm text-[#2F6BFF]">→</span>
@@ -124,7 +124,7 @@ export default function MammutContactSection() {
             <form onSubmit={handleSubmit} className="space-y-4 font-mono text-xs">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-[#A39985] text-[10px]">YOUR NAME</label>
+                  <label className="text-[#A39985] text-[11px]">YOUR NAME</label>
                   <input
                     type="text"
                     required
@@ -133,7 +133,7 @@ export default function MammutContactSection() {
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[#A39985] text-[10px]">CORPORATE EMAIL</label>
+                  <label className="text-[#A39985] text-[11px]">CORPORATE EMAIL</label>
                   <input
                     type="email"
                     required
@@ -144,7 +144,7 @@ export default function MammutContactSection() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-[#A39985] text-[10px]">SYSTEM REQUIREMENTS & SCOPE</label>
+                <label className="text-[#A39985] text-[11px]">SYSTEM REQUIREMENTS & SCOPE</label>
                 <textarea
                   rows={3}
                   required

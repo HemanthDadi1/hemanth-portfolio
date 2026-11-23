@@ -50,7 +50,7 @@ export default function CapabilitiesAccordion() {
   return (
     <section
       id="capabilities"
-      className="min-h-screen lg:h-screen lg:max-h-screen w-full flex flex-col justify-between px-4 sm:px-8 max-w-6xl mx-auto snap-start relative box-border pt-20 pb-6 sm:pb-8 border-t border-[rgba(216,203,179,0.08)]"
+      className="min-h-screen lg:h-screen lg:max-h-screen w-full flex flex-col justify-between [&>*:not(:first-child):not(:last-child)]:my-auto px-5 sm:px-10 max-w-7xl mx-auto snap-start relative box-border pt-24 pb-8 sm:pb-10 border-t border-[rgba(216,203,179,0.08)]"
     >
       {/* Top Header */}
       <div className="space-y-1.5 sm:space-y-2">
