@@ -72,15 +72,15 @@
     /* FULL PAGE SNAP SCROLLER */
     #scroll-container {
       height: 100vh;
-      overflow-y: scroll;
+      overflow-y: auto;
       scroll-snap-type: y mandatory;
       scroll-behavior: smooth;
+      scroll-padding-top: 4rem;
       -webkit-overflow-scrolling: touch;
     }
 
     .full-page-block {
       min-height: 100vh;
-      height: 100vh;
       scroll-snap-align: start;
       scroll-snap-stop: always;
       display: flex;
@@ -288,8 +288,8 @@
       <!-- ========================================== -->
       <!-- PAGE 01: HERO (FULL-PAGE BLOCK)            -->
       <!-- ========================================== -->
-      <section id="hero" class="full-page-block px-4 sm:px-6 max-w-6xl mx-auto">
-        <div class="space-y-6 sm:space-y-8 my-auto">
+      <section id="hero" class="full-page-block px-4 sm:px-6 max-w-6xl mx-auto pt-20 pb-8">
+        <div class="space-y-4 sm:space-y-5 my-auto">
           <!-- Eyebrow Pill -->
           <div class="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-[#181A20] border border-[rgba(216,203,179,0.16)] text-xs font-mono">
             <span class="w-2 h-2 rounded-full bg-[#2F6BFF] animate-pulse"></span>
@@ -299,11 +299,11 @@
           </div>
 
           <!-- Editorial Title -->
-          <div class="space-y-4">
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight text-[#F5EFE6] leading-[1.05]">
+          <div class="space-y-2.5">
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight text-[#F5EFE6] leading-[1.08]">
               Architecting <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#2F6BFF] via-[#F5EFE6] to-[#D8CBB3]">Deterministic AI</span> for Heavy Industry.
             </h1>
-            <p class="text-base sm:text-xl md:text-2xl text-[#D8CBB3] font-normal leading-relaxed max-w-3xl">
+            <p class="text-sm sm:text-base md:text-lg text-[#D8CBB3] font-normal leading-relaxed max-w-2xl">
               I engineer zero-hallucination inference pipelines, mathematical operations research, and sovereign human-verified systems for physical manufacturing, supply chains, and travel.
             </p>
           </div>
@@ -351,15 +351,15 @@
       <!-- ========================================== -->
       <!-- PAGE 02: THESIS & AXIOM (FULL-PAGE BLOCK)  -->
       <!-- ========================================== -->
-      <section id="thesis" class="full-page-block px-4 sm:px-6 max-w-6xl mx-auto border-t border-[rgba(216,203,179,0.08)]">
-        <div class="space-y-6 sm:space-y-8 my-auto">
+      <section id="thesis" class="full-page-block px-4 sm:px-6 max-w-6xl mx-auto border-t border-[rgba(216,203,179,0.08)] pt-20 pb-8">
+        <div class="space-y-4 sm:space-y-5 my-auto">
           <!-- Section Eyebrow -->
-          <div class="space-y-2">
+          <div class="space-y-1">
             <div class="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
               <span class="w-2 h-2 rounded-full bg-[#2F6BFF]"></span>
               <span>02. OPERATIONAL THESIS & FIRST PRINCIPLES</span>
             </div>
-            <h2 class="text-3xl sm:text-5xl font-display font-bold text-[#F5EFE6] tracking-tight">
+            <h2 class="text-2xl sm:text-4xl font-display font-bold text-[#F5EFE6] tracking-tight">
               The Deterministic AI Axiom
             </h2>
             <p class="text-sm text-[#A39985] font-mono max-w-2xl">

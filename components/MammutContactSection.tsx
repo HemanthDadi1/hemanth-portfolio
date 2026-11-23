@@ -18,7 +18,7 @@ export default function MammutContactSection() {
   };
 
   return (
-    <section id="contact" className="h-screen min-h-[680px] flex flex-col justify-center px-4 sm:px-6 max-w-6xl mx-auto snap-start snap-always relative box-border py-12 border-t border-[rgba(216,203,179,0.08)]">
+    <section id="contact" className="min-h-screen flex flex-col justify-center px-4 sm:px-6 max-w-6xl mx-auto snap-start relative box-border pt-20 pb-8 border-t border-[rgba(216,203,179,0.08)]">
       <div className="space-y-6 my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-5 space-y-4">

@@ -22,7 +22,7 @@ export default function Home() {
       <ScrollHudRail />
 
       {/* Full-Page Snap Scroll Container */}
-      <div id="scroll-container" className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth relative z-10">
+      <div id="scroll-container" className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth relative z-10 scroll-pt-16">
         <MammutHero />
         <MammutThesisBlock />
         <InteractiveSystemsShowcase />

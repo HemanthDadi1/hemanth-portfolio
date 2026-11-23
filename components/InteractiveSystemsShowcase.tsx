@@ -70,7 +70,7 @@ export default function InteractiveSystemsShowcase() {
   };
 
   return (
-    <section id="work" className="h-screen min-h-[680px] flex flex-col justify-center px-4 sm:px-6 max-w-6xl mx-auto snap-start snap-always relative box-border py-12 border-t border-[rgba(216,203,179,0.08)]">
+    <section id="work" className="min-h-screen flex flex-col justify-center px-4 sm:px-6 max-w-6xl mx-auto snap-start relative box-border pt-20 pb-8 border-t border-[rgba(216,203,179,0.08)]">
       <div className="space-y-4 my-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-3">

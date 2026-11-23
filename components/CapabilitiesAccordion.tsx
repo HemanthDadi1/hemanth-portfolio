@@ -48,7 +48,7 @@ export default function CapabilitiesAccordion() {
   };
 
   return (
-    <section id="capabilities" className="h-screen min-h-[680px] flex flex-col justify-center px-4 sm:px-6 max-w-6xl mx-auto snap-start snap-always relative box-border py-12 border-t border-[rgba(216,203,179,0.08)]">
+    <section id="capabilities" className="min-h-screen flex flex-col justify-center px-4 sm:px-6 max-w-6xl mx-auto snap-start relative box-border pt-20 pb-8 border-t border-[rgba(216,203,179,0.08)]">
       <div className="space-y-6 my-auto">
         <div className="space-y-1">
           <div className="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
