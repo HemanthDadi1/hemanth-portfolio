@@ -25,7 +25,7 @@ export default function MammutNavbar() {
               HEMANTH DADI
             </span>
             <div className="flex items-center space-x-1.5 font-mono text-[10px] text-[#A39985]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2F6BFF] animate-pulse"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse"></span>
               <span>HYDERABAD, IN</span>
               <span className="text-[rgba(216,203,179,0.3)]">//</span>
               <span>AI SYSTEMS ARCHITECT</span>

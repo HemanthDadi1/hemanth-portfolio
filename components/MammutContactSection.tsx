@@ -20,23 +20,24 @@ export default function MammutContactSection() {
   return (
     <section
       id="contact"
-      className="min-h-screen w-full flex flex-col justify-between px-4 sm:px-8 max-w-6xl mx-auto snap-start relative box-border pt-24 pb-8 sm:pb-12 border-t border-[rgba(216,203,179,0.08)]"
+      className="min-h-screen lg:h-screen lg:max-h-screen w-full flex flex-col justify-between px-4 sm:px-8 max-w-6xl mx-auto snap-start relative box-border pt-20 pb-6 sm:pb-8 border-t border-[rgba(216,203,179,0.08)]"
     >
       {/* Top Header */}
-      <div className="space-y-2">
-        <div className="text-xs font-mono text-[#2F6BFF] uppercase tracking-wider font-semibold">
-          06. DIRECT TRANSMISSION // FOUNDER DESK
+      <div className="space-y-1.5 sm:space-y-2">
+        <div className="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
+          <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+          <span>06. DIRECT TRANSMISSION // FOUNDER DESK</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold text-[#F5EFE6]">
+        <h2 className="text-3xl sm:text-5xl font-display font-bold text-[#F5EFE6]">
           Let&apos;s Architect Systems
         </h2>
-        <p className="text-sm sm:text-base text-[#A39985] leading-relaxed font-sans max-w-3xl">
+        <p className="text-xs sm:text-sm text-[#A39985] leading-relaxed font-sans max-w-3xl">
           Whether you are building forward-deployed AI for physical industrial facilities, solving mission-critical operations research problems, or exploring executive advisory:
         </p>
       </div>
 
       {/* Middle Grid: Contact Options & Dispatch Box */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start my-4 sm:my-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start my-2 sm:my-3">
         <div className="lg:col-span-5 space-y-4">
           <div className="space-y-3 font-mono text-xs">
             <div className="p-4 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] flex items-center justify-between hover:border-[#2F6BFF]/40 transition-colors">
@@ -150,13 +151,29 @@ export default function MammutContactSection() {
         </div>
       </div>
 
-      {/* Bottom Micro Status Strip */}
-      <div className="border-t border-[rgba(216,203,179,0.1)] pt-4 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[#A39985] gap-2">
-        <div>
-          <span className="text-[#2F6BFF]">● SYSTEM ONLINE</span> // HEMANTH DADI &bull; HYDERABAD, IN (17.3850° N, 78.4867° E)
+      {/* Bottom Footer Telemetry Strip */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 pb-1 border-t border-[rgba(216,203,179,0.1)] font-mono text-xs">
+        <div className="flex items-center space-x-3 text-[#A39985]">
+          <span>PAGE 06 / 06</span>
+          <span className="text-[rgba(216,203,179,0.3)]">//</span>
+          <span>FOUNDER TRANSMISSION</span>
+          <span className="text-[rgba(216,203,179,0.3)]">//</span>
+          <button
+            onClick={() => {
+              const el = document.getElementById("hero");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="text-[#2F6BFF] font-semibold animate-pulse hover:underline flex items-center space-x-1"
+          >
+            <span>BACK TO TOP ↑</span>
+          </button>
         </div>
-        <div>
-          &copy; 2026 Hemanth Dadi. &ldquo;AI reads. People confirm. Rules decide.&rdquo;
+
+        <div className="flex items-center space-x-2 text-[#A39985]">
+          <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse inline-block"></span>
+          <span className="text-[#10B981] font-semibold">HYDERABAD NODE ONLINE</span>
+          <span className="text-[rgba(216,203,179,0.3)]">//</span>
+          <span>&copy; 2026 Hemanth Dadi</span>
         </div>
       </div>
     </section>

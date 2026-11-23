@@ -50,45 +50,45 @@ export default function CapabilitiesAccordion() {
   return (
     <section
       id="capabilities"
-      className="min-h-screen w-full flex flex-col justify-between px-4 sm:px-8 max-w-6xl mx-auto snap-start relative box-border pt-24 pb-8 sm:pb-12 border-t border-[rgba(216,203,179,0.08)]"
+      className="min-h-screen lg:h-screen lg:max-h-screen w-full flex flex-col justify-between px-4 sm:px-8 max-w-6xl mx-auto snap-start relative box-border pt-20 pb-6 sm:pb-8 border-t border-[rgba(216,203,179,0.08)]"
     >
       {/* Top Header */}
-      <div className="space-y-2">
+      <div className="space-y-1.5 sm:space-y-2">
         <div className="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
-          <span className="w-2 h-2 rounded-full bg-[#2F6BFF]"></span>
+          <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
           <span>04. ARCHITECTURAL CAPABILITIES</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold text-[#F5EFE6] tracking-tight">
+        <h2 className="text-3xl sm:text-5xl font-display font-bold text-[#F5EFE6] tracking-tight">
           How I Architect Systems
         </h2>
-        <p className="text-sm sm:text-base text-[#A39985] font-mono">
+        <p className="text-xs sm:text-sm text-[#A39985] font-mono">
           Click each capability to expand the engineering specifications and applied tech stack.
         </p>
       </div>
 
       {/* Middle Block: Spacious Expandable Accordion List */}
-      <div className="space-y-3.5 font-mono my-4 sm:my-6">
+      <div className="space-y-2 sm:space-y-2.5 font-mono my-2 sm:my-3">
         {CAPABILITIES.map((item, idx) => {
           const isOpen = openIndex === idx;
           return (
             <div
               key={item.id}
               onClick={() => toggle(idx)}
-              className={`p-5 sm:p-6 rounded-2xl bg-[#181A20] border transition-all cursor-pointer select-none ${
+              className={`p-3.5 sm:p-4 rounded-xl bg-[#181A20] border transition-all cursor-pointer select-none ${
                 isOpen
                   ? "border-[#2F6BFF]/60 shadow-[0_10px_30px_rgba(47,107,255,0.12)]"
                   : "border-[rgba(216,203,179,0.14)] hover:border-[rgba(216,203,179,0.25)]"
               }`}
             >
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <span className="text-[#2F6BFF] font-bold text-base sm:text-lg">{item.id}</span>
-                  <h3 className="text-base sm:text-xl font-display font-bold text-[#F5EFE6]">
+                <div className="flex items-center space-x-3 sm:space-x-4">
+                  <span className="text-[#2F6BFF] font-bold text-sm sm:text-base">{item.id}</span>
+                  <h3 className="text-sm sm:text-base font-display font-bold text-[#F5EFE6]">
                     {item.title}
                   </h3>
                 </div>
                 <span
-                  className={`text-xl text-[#A39985] transition-transform duration-200 inline-block ${
+                  className={`text-lg text-[#A39985] transition-transform duration-200 inline-block ${
                     isOpen ? "rotate-90 text-[#2F6BFF]" : ""
                   }`}
                 >
@@ -97,13 +97,13 @@ export default function CapabilitiesAccordion() {
               </div>
 
               {isOpen && (
-                <div className="pt-4 space-y-3 font-sans text-sm text-[#D8CBB3] animate-fadeIn">
-                  <p className="leading-relaxed text-sm sm:text-base">{item.description}</p>
-                  <div className="flex flex-wrap gap-2.5 pt-2 font-mono text-xs">
+                <div className="pt-2.5 space-y-2 font-sans text-xs sm:text-sm text-[#D8CBB3] animate-fadeIn">
+                  <p className="leading-relaxed text-xs sm:text-sm">{item.description}</p>
+                  <div className="flex flex-wrap gap-2 pt-1 font-mono text-[11px]">
                     {item.tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}
-                        className="px-3 py-1.5 rounded-lg bg-[#101114] text-[#A39985] border border-[rgba(216,203,179,0.1)]"
+                        className="px-2.5 py-1 rounded-lg bg-[#101114] text-[#A39985] border border-[rgba(216,203,179,0.1)]"
                       >
                         {tag}
                       </span>
@@ -117,14 +117,24 @@ export default function CapabilitiesAccordion() {
       </div>
 
       {/* Bottom Footer Telemetry Strip */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-3 border-t border-[rgba(216,203,179,0.1)] font-mono text-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 pb-1 border-t border-[rgba(216,203,179,0.1)] font-mono text-xs">
         <div className="flex items-center space-x-3 text-[#A39985]">
           <span>PAGE 04 / 06</span>
           <span className="text-[rgba(216,203,179,0.3)]">//</span>
           <span>DETERMINISTIC SYSTEMS ARCHITECTURE</span>
+          <span className="text-[rgba(216,203,179,0.3)]">//</span>
+          <button
+            onClick={() => {
+              const el = document.getElementById("research");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="text-[#2F6BFF] font-semibold animate-pulse hover:underline flex items-center space-x-1"
+          >
+            <span>SCROLL DOWN ↓</span>
+          </button>
         </div>
 
-        <div className="text-[#2F6BFF] font-semibold">
+        <div className="text-[#2F6BFF] font-semibold text-xs">
           4 PILLARS &bull; 100% MATHEMATICAL VERIFICATION
         </div>
       </div>

@@ -71,19 +71,19 @@ export default function InteractiveSystemsShowcase() {
   return (
     <section
       id="work"
-      className="min-h-screen w-full flex flex-col justify-between px-4 sm:px-8 max-w-6xl mx-auto snap-start relative box-border pt-24 pb-8 sm:pb-12 border-t border-[rgba(216,203,179,0.08)]"
+      className="min-h-screen lg:h-screen lg:max-h-screen w-full flex flex-col justify-between px-4 sm:px-8 max-w-6xl mx-auto snap-start relative box-border pt-20 pb-6 sm:pb-8 border-t border-[rgba(216,203,179,0.08)]"
     >
       {/* Top Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div className="space-y-2">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-3">
+        <div className="space-y-1 sm:space-y-1.5">
           <div className="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
-            <span className="w-2 h-2 rounded-full bg-[#2F6BFF]"></span>
+            <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
             <span>03. FEATURED SYSTEMS & PRODUCTION DEPLOYMENTS</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold text-[#F5EFE6] tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-[#F5EFE6] tracking-tight">
             Selected Work
           </h2>
-          <p className="text-sm sm:text-base text-[#A39985] font-mono max-w-2xl">
+          <p className="text-xs sm:text-sm text-[#A39985] font-mono max-w-2xl">
             Swipe or click any system to inspect its live simulated software interface, operational metrics, and architecture case study.
           </p>
         </div>
@@ -179,38 +179,36 @@ export default function InteractiveSystemsShowcase() {
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
-          className="relative overflow-hidden cursor-grab active:cursor-grabbing select-none min-h-[380px] sm:min-h-[420px] flex items-center"
+          className="relative overflow-hidden cursor-grab active:cursor-grabbing select-none min-h-[290px] sm:min-h-[330px] flex items-center w-full"
         >
           {/* Floating Left / Right Chevrons */}
           <button
             onClick={prevSlide}
             aria-label="Previous System"
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-[#101114]/90 backdrop-blur border border-[rgba(216,203,179,0.2)] text-[#D8CBB3] hover:text-[#2F6BFF] hover:border-[#2F6BFF] flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-xl hidden sm:flex text-xl"
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#101114]/90 backdrop-blur border border-[rgba(216,203,179,0.2)] text-[#D8CBB3] hover:text-[#2F6BFF] hover:border-[#2F6BFF] flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-xl hidden sm:flex text-lg"
           >
             ‹
           </button>
           <button
             onClick={nextSlide}
             aria-label="Next System"
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-[#101114]/90 backdrop-blur border border-[rgba(216,203,179,0.2)] text-[#D8CBB3] hover:text-[#2F6BFF] hover:border-[#2F6BFF] flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-xl hidden sm:flex text-xl"
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#101114]/90 backdrop-blur border border-[rgba(216,203,179,0.2)] text-[#D8CBB3] hover:text-[#2F6BFF] hover:border-[#2F6BFF] flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-xl hidden sm:flex text-lg"
           >
             ›
           </button>
 
-          {/* Sliding Track */}
+          {/* Sliding Track: Each slide is guaranteed 100% of window width */}
           <div
             className="flex transition-transform ease-[cubic-bezier(0.16,1,0.3,1)] w-full"
             style={{
-              width: `${totalSlides * 100}%`,
-              transform: `translateX(calc(-${(currentIndex * 100) / totalSlides}% + ${dragOffset}px))`,
+              transform: `translateX(calc(-${currentIndex * 100}% + ${dragOffset}px))`,
               transitionDuration: isDragging ? "0ms" : "450ms",
             }}
           >
             {PROJECTS.map((proj) => (
               <div
                 key={proj.slug}
-                className="p-6 sm:p-10 space-y-6 shrink-0"
-                style={{ width: `${100 / totalSlides}%` }}
+                className="w-full min-w-full max-w-full p-4 sm:p-6 lg:p-8 space-y-3 shrink-0 flex-shrink-0 box-border"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                   <div className="lg:col-span-7 space-y-4">
@@ -295,14 +293,24 @@ export default function InteractiveSystemsShowcase() {
       </div>
 
       {/* Bottom Footer Telemetry Strip */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-3 border-t border-[rgba(216,203,179,0.1)] font-mono text-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 pb-1 border-t border-[rgba(216,203,179,0.1)] font-mono text-xs">
         <div className="flex items-center space-x-3 text-[#A39985]">
           <span>PAGE 03 / 06</span>
           <span className="text-[rgba(216,203,179,0.3)]">//</span>
           <span>PRODUCTION DEPLOYMENTS</span>
+          <span className="text-[rgba(216,203,179,0.3)]">//</span>
+          <button
+            onClick={() => {
+              const el = document.getElementById("capabilities");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="text-[#2F6BFF] font-semibold animate-pulse hover:underline flex items-center space-x-1"
+          >
+            <span>SCROLL DOWN ↓</span>
+          </button>
         </div>
 
-        <div className="text-[#2F6BFF] font-semibold">
+        <div className="text-[#2F6BFF] font-semibold text-xs">
           ACTIVE SYSTEM: {activeProject.title.toUpperCase()}
         </div>
       </div>

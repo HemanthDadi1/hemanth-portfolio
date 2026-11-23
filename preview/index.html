@@ -87,18 +87,16 @@
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      padding-top: 6rem;
-      padding-bottom: 2.5rem;
+      padding-top: 5rem;
+      padding-bottom: 1.5rem;
       box-sizing: border-box;
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
-    @media (max-height: 720px) {
+    @media (min-height: 750px) {
       .full-page-block {
-        height: auto;
-        min-height: 100vh;
-        padding-top: 5rem;
-        padding-bottom: 3rem;
+        height: 100vh;
+        max-height: 100vh;
       }
     }
 
@@ -218,7 +216,7 @@
             HEMANTH DADI
           </span>
           <div class="flex items-center space-x-1.5 font-mono text-[10px] text-[#A39985]">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#2F6BFF] animate-pulse"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse"></span>
             <span>HYDERABAD, IN</span>
             <span class="text-[rgba(216,203,179,0.3)]">//</span>
             <span>AI SYSTEMS ARCHITECT</span>
@@ -292,7 +290,7 @@
         <!-- Top Block: Eyebrow + Large Headline + Lead Paragraph -->
         <div class="space-y-4 sm:space-y-6">
           <div class="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-[#181A20] border border-[rgba(216,203,179,0.16)] text-xs font-mono w-fit">
-            <span class="w-2 h-2 rounded-full bg-[#2F6BFF] animate-pulse"></span>
+            <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
             <span class="text-[#D8CBB3]">FOUNDING AI ENGINEER & RESEARCHER</span>
             <span class="text-[rgba(216,203,179,0.3)]">//</span>
             <span class="text-[#2F6BFF] font-semibold">17.3850° N, 78.4867° E</span>
@@ -368,7 +366,7 @@
           <!-- Section Eyebrow -->
           <div class="space-y-1">
             <div class="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
-              <span class="w-2 h-2 rounded-full bg-[#2F6BFF]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
               <span>02. OPERATIONAL THESIS & FIRST PRINCIPLES</span>
             </div>
             <h2 class="text-2xl sm:text-4xl font-display font-bold text-[#F5EFE6] tracking-tight">
@@ -433,6 +431,22 @@
               <div class="pt-2 text-[10px] text-[#A39985]">Exact Math • PuLP MILP • Python Sandboxes</div>
             </div>
           </div>
+
+          <!-- Bottom Footer Telemetry Strip -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 pb-1 border-t border-[rgba(216,203,179,0.1)] font-mono text-xs">
+            <div class="flex items-center space-x-3 text-[#A39985]">
+              <span>PAGE 02 / 06</span>
+              <span class="text-[rgba(216,203,179,0.3)]">//</span>
+              <span>ZERO-HALLUCINATION AXIOM</span>
+              <span class="text-[rgba(216,203,179,0.3)]">//</span>
+              <button onclick="scrollToBlock('work')" class="text-[#2F6BFF] font-semibold animate-pulse hover:underline flex items-center space-x-1">
+                <span>SCROLL DOWN ↓</span>
+              </button>
+            </div>
+            <div class="text-[#2F6BFF] font-semibold text-xs">
+              FOUNDATIONAL THESIS
+            </div>
+          </div>
         </div>
       </section>
 
@@ -445,7 +459,7 @@
           <div class="flex flex-col md:flex-row md:items-end justify-between gap-3">
             <div class="space-y-1">
               <div class="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
-                <span class="w-2 h-2 rounded-full bg-[#2F6BFF]"></span>
+                <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
                 <span>03. FEATURED SYSTEMS & PRODUCTION DEPLOYMENTS</span>
               </div>
               <h2 class="text-2xl sm:text-4xl font-display font-bold text-[#F5EFE6] tracking-tight">
@@ -554,6 +568,22 @@
               </div>
             </div>
           </div>
+
+          <!-- Bottom Footer Telemetry Strip -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 pb-1 border-t border-[rgba(216,203,179,0.1)] font-mono text-xs">
+            <div class="flex items-center space-x-3 text-[#A39985]">
+              <span>PAGE 03 / 06</span>
+              <span class="text-[rgba(216,203,179,0.3)]">//</span>
+              <span>PRODUCTION DEPLOYMENTS</span>
+              <span class="text-[rgba(216,203,179,0.3)]">//</span>
+              <button onclick="scrollToBlock('capabilities')" class="text-[#2F6BFF] font-semibold animate-pulse hover:underline flex items-center space-x-1">
+                <span>SCROLL DOWN ↓</span>
+              </button>
+            </div>
+            <div id="footer-active-system" class="text-[#2F6BFF] font-semibold text-xs">
+              ACTIVE SYSTEM: WAYLOSA (TRAVEL AI)
+            </div>
+          </div>
         </div>
       </section>
 
@@ -564,7 +594,7 @@
         <div class="space-y-6 my-auto">
           <div class="space-y-1">
             <div class="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
-              <span class="w-2 h-2 rounded-full bg-[#2F6BFF]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
               <span>04. ARCHITECTURAL CAPABILITIES</span>
             </div>
             <h2 class="text-3xl sm:text-5xl font-display font-bold text-[#F5EFE6] tracking-tight">
@@ -661,6 +691,22 @@
               </div>
             </div>
           </div>
+
+          <!-- Bottom Footer Telemetry Strip -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 pb-1 border-t border-[rgba(216,203,179,0.1)] font-mono text-xs">
+            <div class="flex items-center space-x-3 text-[#A39985]">
+              <span>PAGE 04 / 06</span>
+              <span class="text-[rgba(216,203,179,0.3)]">//</span>
+              <span>DETERMINISTIC SYSTEMS ARCHITECTURE</span>
+              <span class="text-[rgba(216,203,179,0.3)]">//</span>
+              <button onclick="scrollToBlock('research')" class="text-[#2F6BFF] font-semibold animate-pulse hover:underline flex items-center space-x-1">
+                <span>SCROLL DOWN ↓</span>
+              </button>
+            </div>
+            <div class="text-[#2F6BFF] font-semibold text-xs">
+              4 PILLARS &bull; 100% MATHEMATICAL VERIFICATION
+            </div>
+          </div>
         </div>
       </section>
 
@@ -671,7 +717,7 @@
         <div class="space-y-6 my-auto">
           <div class="space-y-1">
             <div class="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
-              <span class="w-2 h-2 rounded-full bg-[#2F6BFF]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
               <span>05. SCIENTIFIC PAPERS & CREDENTIALS</span>
             </div>
             <h2 class="text-3xl sm:text-5xl font-display font-bold text-[#F5EFE6] tracking-tight">
@@ -746,6 +792,22 @@
               </div>
             </div>
           </div>
+
+          <!-- Bottom Footer Telemetry Strip -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 pb-1 border-t border-[rgba(216,203,179,0.1)] font-mono text-xs">
+            <div class="flex items-center space-x-3 text-[#A39985]">
+              <span>PAGE 05 / 06</span>
+              <span class="text-[rgba(216,203,179,0.3)]">//</span>
+              <span>RESEARCH & ACADEMIC LINEAGE</span>
+              <span class="text-[rgba(216,203,179,0.3)]">//</span>
+              <button onclick="scrollToBlock('contact')" class="text-[#2F6BFF] font-semibold animate-pulse hover:underline flex items-center space-x-1">
+                <span>SCROLL DOWN ↓</span>
+              </button>
+            </div>
+            <div class="text-[#2F6BFF] font-semibold text-xs">
+              PEER REVIEW: IOP PUBLISHING &bull; NASA C-MAPSS FD004
+            </div>
+          </div>
         </div>
       </section>
 
@@ -756,7 +818,10 @@
         <div class="space-y-6 my-auto">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div class="lg:col-span-5 space-y-4">
-              <div class="text-xs font-mono text-[#2F6BFF]">06. DIRECT TRANSMISSION // FOUNDER DESK</div>
+              <div class="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
+                <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+                <span>06. DIRECT TRANSMISSION // FOUNDER DESK</span>
+              </div>
               <h2 class="text-3xl sm:text-4xl font-display font-bold text-[#F5EFE6]">Let&apos;s Architect Systems</h2>
               <p class="text-sm text-[#A39985] leading-relaxed font-sans">
                 Whether you are building forward-deployed AI for physical industrial facilities, solving mission-critical operations research problems, or looking for advisory:
@@ -830,13 +895,22 @@
             </div>
           </div>
 
-          <!-- Bottom Micro Status Strip -->
-          <div class="border-t border-[rgba(216,203,179,0.1)] pt-4 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[#A39985] gap-2">
-            <div>
-              <span class="text-[#2F6BFF]">● SYSTEM ONLINE</span> // HEMANTH DADI • HYDERABAD, IN (17.3850° N, 78.4867° E)
+          <!-- Bottom Footer Telemetry Strip -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 pb-1 border-t border-[rgba(216,203,179,0.1)] font-mono text-xs">
+            <div class="flex items-center space-x-3 text-[#A39985]">
+              <span>PAGE 06 / 06</span>
+              <span class="text-[rgba(216,203,179,0.3)]">//</span>
+              <span>FOUNDER TRANSMISSION</span>
+              <span class="text-[rgba(216,203,179,0.3)]">//</span>
+              <button onclick="scrollToBlock('hero')" class="text-[#2F6BFF] font-semibold animate-pulse hover:underline flex items-center space-x-1">
+                <span>BACK TO TOP ↑</span>
+              </button>
             </div>
-            <div>
-              &copy; 2026 Hemanth Dadi. &ldquo;AI reads. People confirm. Rules decide.&rdquo;
+            <div class="flex items-center space-x-2 text-[#A39985]">
+              <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse inline-block"></span>
+              <span class="text-[#10B981] font-semibold">HYDERABAD NODE ONLINE</span>
+              <span class="text-[rgba(216,203,179,0.3)]">//</span>
+              <span>&copy; 2026 Hemanth Dadi</span>
             </div>
           </div>
         </div>
@@ -1213,6 +1287,8 @@
       if (countEl) countEl.innerText = `0${currentIndex + 1} / 05`;
       const csBtn = document.getElementById("window-case-study-btn");
       if (csBtn) csBtn.setAttribute("onclick", `showSubpage('${slug}')`);
+      const footerSys = document.getElementById("footer-active-system");
+      if (footerSys && data) footerSys.textContent = `ACTIVE SYSTEM: ${data.title.toUpperCase()}`;
     }
 
     function selectSystemTab(slug) {
