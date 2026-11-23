@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hemanth Dadi | AI Systems Architect & Founder</title>
+  <meta name="description" content="Hemanth Dadi — AI Systems Architect & Founder. Founding AI Engineer at Waylosa. 'AI reads. People confirm. Rules decide.'">
+  
+  <!-- Fonts: Space Grotesk (Bold Editorial Display) + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            charcoal: {
+              DEFAULT: '#101114',
+              surface: '#181A20',
+              card: '#1D2027',
+              border: 'rgba(216, 203, 179, 0.12)',
+              inset: '#0D0E11',
+            },
+            sand: {
+              DEFAULT: '#D8CBB3',
+              light: '#F5EFE6',
+              soft: '#E8E0D2',
+              muted: '#A39985',
+              hairline: 'rgba(216, 203, 179, 0.14)',
+            },
+            electric: {
+              DEFAULT: '#2F6BFF',
+              hover: '#4D82FF',
+              glow: 'rgba(47, 107, 255, 0.35)',
+              subtle: 'rgba(47, 107, 255, 0.12)',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #101114;
+      color: #D8CBB3;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    /* Background micro-grid */
+    .bg-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(216, 203, 179, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(216, 203, 179, 0.03) 1px, transparent 1px);
+    }
+
+    /* FULL PAGE SNAP SCROLLER */
+    #scroll-container {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .full-page-block {
+      min-height: 100vh;
+      height: 100vh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      padding-top: 4.5rem;
+      padding-bottom: 2rem;
+      box-sizing: border-box;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    @media (max-height: 720px) {
+      .full-page-block {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 5rem;
+        padding-bottom: 3rem;
+      }
+    }
+
+    /* Mammut Studios style interactive window cards */
+    .mockup-window {
+      background: #181A20;
+      border: 1px solid rgba(216, 203, 179, 0.14);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mockup-window:hover {
+      border-color: rgba(47, 107, 255, 0.4);
+      box-shadow: 0 25px 60px rgba(47, 107, 255, 0.1);
+    }
+
+    /* Swipe & Slide Transitions */
+    .swipe-container {
+      position: relative;
+      overflow: hidden;
+      touch-action: pan-y;
+      cursor: grab;
+      user-select: none;
+    }
+    .swipe-container:active {
+      cursor: grabbing;
+    }
+    .swipe-track {
+      display: flex;
+      width: 500%;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+    .swipe-slide {
+      width: 20%;
+      flex-shrink: 0;
+    }
+    
+    /* Page View Transitions (Subpages) */
+    .page-view-transition {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      will-change: transform, opacity;
+    }
+    .page-view-active {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    .page-view-exit-left {
+      transform: translateX(-50px);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .page-view-enter-right {
+      transform: translateX(50px);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Accordion transition */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease-out, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .accordion-item.active .accordion-content {
+      max-height: 400px;
+      opacity: 1;
+    }
+    .accordion-item.active .accordion-arrow {
+      transform: rotate(90deg);
+      color: #2F6BFF;
+    }
+
+    /* Custom subtle scrollbar */
+    #scroll-container::-webkit-scrollbar {
+      width: 6px;
+    }
+    #scroll-container::-webkit-scrollbar-track {
+      background: #101114;
+    }
+    #scroll-container::-webkit-scrollbar-thumb {
+      background: rgba(216, 203, 179, 0.2);
+      border-radius: 3px;
+    }
+    #scroll-container::-webkit-scrollbar-thumb:hover {
+      background: #2F6BFF;
+    }
+
+    /* Subtle pulse */
+    @keyframes subtleGlow {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+    .pulse-glow {
+      animation: subtleGlow 2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-[#101114] text-[#D8CBB3] selection:bg-[#2F6BFF]/30 selection:text-white">
+
+  <!-- Background Ambient Pattern -->
+  <div class="fixed inset-0 pointer-events-none z-0 bg-grid opacity-60"></div>
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#2F6BFF]/8 rounded-full blur-[140px] pointer-events-none"></div>
+
+  <!-- FLOATING MINIMAL HUD NAVBAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#101114]/85 backdrop-blur-md border-b border-[rgba(216,203,179,0.1)]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <!-- Founder Brand -->
+      <a href="#hero" onclick="scrollToBlock('hero')" class="flex items-center space-x-3 group">
+        <div class="w-8 h-8 rounded-lg bg-[#181A20] border border-[rgba(216,203,179,0.2)] flex items-center justify-center font-mono text-xs font-bold text-[#2F6BFF] group-hover:border-[#2F6BFF] transition-all">
+          HD
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-sm tracking-tight text-[#F5EFE6] group-hover:text-[#2F6BFF] transition-colors">
+            HEMANTH DADI
+          </span>
+          <div class="flex items-center space-x-1.5 font-mono text-[10px] text-[#A39985]">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#2F6BFF] animate-pulse"></span>
+            <span>HYDERABAD, IN</span>
+            <span class="text-[rgba(216,203,179,0.3)]">//</span>
+            <span>AI SYSTEMS ARCHITECT</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-1 text-xs font-mono">
+        <button onclick="scrollToBlock('hero')" class="nav-link px-2.5 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#181A20] rounded-lg transition-all" data-target="hero">01. HERO</button>
+        <button onclick="scrollToBlock('thesis')" class="nav-link px-2.5 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#181A20] rounded-lg transition-all" data-target="thesis">02. THESIS</button>
+        <button onclick="scrollToBlock('work')" class="nav-link px-2.5 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#181A20] rounded-lg transition-all" data-target="work">03. WORK</button>
+        <button onclick="scrollToBlock('capabilities')" class="nav-link px-2.5 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#181A20] rounded-lg transition-all" data-target="capabilities">04. ARCHITECTURE</button>
+        <button onclick="scrollToBlock('research')" class="nav-link px-2.5 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#181A20] rounded-lg transition-all" data-target="research">05. RESEARCH</button>
+        <button onclick="scrollToBlock('contact')" class="nav-link px-2.5 py-1.5 text-[#D8CBB3] hover:text-[#2F6BFF] hover:bg-[#181A20] rounded-lg transition-all" data-target="contact">06. CONTACT</button>
+      </nav>
+
+      <!-- Quick Copy & Transmit -->
+      <div class="flex items-center space-x-2">
+        <button onclick="copyEmail()" class="px-3 py-1.5 rounded-lg bg-[#181A20] border border-[rgba(216,203,179,0.18)] hover:border-[#2F6BFF]/60 text-xs font-mono text-[#D8CBB3] hover:text-white flex items-center space-x-1.5 transition-all">
+          <svg class="w-3.5 h-3.5 text-[#A39985]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
+          <span id="copy-text" class="hidden sm:inline">hemanthdadi3@gmail.com</span>
+          <span class="sm:hidden">EMAIL</span>
+        </button>
+        <button onclick="scrollToBlock('contact')" class="hidden sm:flex items-center space-x-1 px-3.5 py-1.5 rounded-lg bg-[#2F6BFF] hover:bg-[#4D82FF] text-white text-xs font-mono font-medium transition-all shadow-[0_0_15px_rgba(47,107,255,0.35)]">
+          <span>TRANSMIT</span>
+          <span>↗</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- FLOATING RIGHT-SIDE HUD SCROLL INDICATOR RAIL -->
+  <nav id="scroll-hud" class="fixed right-4 sm:right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col space-y-3 font-mono text-xs">
+    <button onclick="scrollToBlock('hero')" class="hud-item group flex items-center justify-end space-x-2" data-target="hero">
+      <span class="hud-label text-[10px] text-[#A39985] opacity-0 group-hover:opacity-100 transition-opacity bg-[#181A20] px-2 py-0.5 rounded border border-[rgba(216,203,179,0.12)]">01. HERO</span>
+      <span class="hud-dot w-2 h-2 rounded-full bg-[rgba(216,203,179,0.25)] group-hover:bg-[#2F6BFF] transition-all"></span>
+    </button>
+    <button onclick="scrollToBlock('thesis')" class="hud-item group flex items-center justify-end space-x-2" data-target="thesis">
+      <span class="hud-label text-[10px] text-[#A39985] opacity-0 group-hover:opacity-100 transition-opacity bg-[#181A20] px-2 py-0.5 rounded border border-[rgba(216,203,179,0.12)]">02. THESIS</span>
+      <span class="hud-dot w-2 h-2 rounded-full bg-[rgba(216,203,179,0.25)] group-hover:bg-[#2F6BFF] transition-all"></span>
+    </button>
+    <button onclick="scrollToBlock('work')" class="hud-item group flex items-center justify-end space-x-2" data-target="work">
+      <span class="hud-label text-[10px] text-[#A39985] opacity-0 group-hover:opacity-100 transition-opacity bg-[#181A20] px-2 py-0.5 rounded border border-[rgba(216,203,179,0.12)]">03. WORK</span>
+      <span class="hud-dot w-2 h-2 rounded-full bg-[rgba(216,203,179,0.25)] group-hover:bg-[#2F6BFF] transition-all"></span>
+    </button>
+    <button onclick="scrollToBlock('capabilities')" class="hud-item group flex items-center justify-end space-x-2" data-target="capabilities">
+      <span class="hud-label text-[10px] text-[#A39985] opacity-0 group-hover:opacity-100 transition-opacity bg-[#181A20] px-2 py-0.5 rounded border border-[rgba(216,203,179,0.12)]">04. ARCHITECTURE</span>
+      <span class="hud-dot w-2 h-2 rounded-full bg-[rgba(216,203,179,0.25)] group-hover:bg-[#2F6BFF] transition-all"></span>
+    </button>
+    <button onclick="scrollToBlock('research')" class="hud-item group flex items-center justify-end space-x-2" data-target="research">
+      <span class="hud-label text-[10px] text-[#A39985] opacity-0 group-hover:opacity-100 transition-opacity bg-[#181A20] px-2 py-0.5 rounded border border-[rgba(216,203,179,0.12)]">05. RESEARCH</span>
+      <span class="hud-dot w-2 h-2 rounded-full bg-[rgba(216,203,179,0.25)] group-hover:bg-[#2F6BFF] transition-all"></span>
+    </button>
+    <button onclick="scrollToBlock('contact')" class="hud-item group flex items-center justify-end space-x-2" data-target="contact">
+      <span class="hud-label text-[10px] text-[#A39985] opacity-0 group-hover:opacity-100 transition-opacity bg-[#181A20] px-2 py-0.5 rounded border border-[rgba(216,203,179,0.12)]">06. CONTACT</span>
+      <span class="hud-dot w-2 h-2 rounded-full bg-[rgba(216,203,179,0.25)] group-hover:bg-[#2F6BFF] transition-all"></span>
+    </button>
+  </nav>
+
+  <!-- SCROLL CONTAINER (FULL-PAGE SNAP SCROLLER) -->
+  <div id="scroll-container">
+
+    <!-- MAIN LANDING VIEW -->
+    <div id="main-view" class="page-view-transition page-view-active">
+
+      <!-- ========================================== -->
+      <!-- PAGE 01: HERO (FULL-PAGE BLOCK)            -->
+      <!-- ========================================== -->
+      <section id="hero" class="full-page-block px-4 sm:px-6 max-w-6xl mx-auto">
+        <div class="space-y-6 sm:space-y-8 my-auto">
+          <!-- Eyebrow Pill -->
+          <div class="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-[#181A20] border border-[rgba(216,203,179,0.16)] text-xs font-mono">
+            <span class="w-2 h-2 rounded-full bg-[#2F6BFF] animate-pulse"></span>
+            <span class="text-[#D8CBB3]">FOUNDING AI ENGINEER & RESEARCHER</span>
+            <span class="text-[rgba(216,203,179,0.3)]">//</span>
+            <span class="text-[#2F6BFF] font-semibold">17.3850° N, 78.4867° E</span>
+          </div>
+
+          <!-- Editorial Title -->
+          <div class="space-y-4">
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight text-[#F5EFE6] leading-[1.05]">
+              Architecting <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#2F6BFF] via-[#F5EFE6] to-[#D8CBB3]">Deterministic AI</span> for Heavy Industry.
+            </h1>
+            <p class="text-base sm:text-xl md:text-2xl text-[#D8CBB3] font-normal leading-relaxed max-w-3xl">
+              I engineer zero-hallucination inference pipelines, mathematical operations research, and sovereign human-verified systems for physical manufacturing, supply chains, and travel.
+            </p>
+          </div>
+
+          <!-- 3 Highlight Pillars -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 font-mono text-xs pt-2">
+            <div class="p-4 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.12)] space-y-1 hover:border-[#2F6BFF]/40 transition-colors">
+              <div class="text-[10px] text-[#A39985] uppercase">Active Engagement</div>
+              <div class="text-sm font-bold text-[#F5EFE6]">Founding AI Engineer</div>
+              <div class="text-[#2F6BFF]">Waylosa (Travel AI Engine)</div>
+            </div>
+            <div class="p-4 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.12)] space-y-1 hover:border-[#2F6BFF]/40 transition-colors">
+              <div class="text-[10px] text-[#A39985] uppercase">Peer-Reviewed Research</div>
+              <div class="text-sm font-bold text-[#F5EFE6]">Conformal UQ (CQR)</div>
+              <div class="text-[#D8CBB3]">NASA C-MAPSS / IOP Review 2026</div>
+            </div>
+            <div class="p-4 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.12)] space-y-1 hover:border-[#2F6BFF]/40 transition-colors">
+              <div class="text-[10px] text-[#A39985] uppercase">Sovereign Build</div>
+              <div class="text-sm font-bold text-[#F5EFE6]">CImEx Compliance</div>
+              <div class="text-[#D8CBB3]">EU CBAM Sovereign Ledger</div>
+            </div>
+          </div>
+
+          <!-- Quick Action Row -->
+          <div class="flex items-center justify-between pt-2">
+            <div class="flex items-center space-x-3 font-mono text-xs">
+              <button onclick="scrollToBlock('work')" class="px-5 py-2.5 rounded-xl bg-[#2F6BFF] hover:bg-[#4D82FF] text-white font-semibold transition-all shadow-[0_0_20px_rgba(47,107,255,0.4)] flex items-center space-x-2">
+                <span>Explore Deployments</span>
+                <span>↓</span>
+              </button>
+              <button onclick="scrollToBlock('thesis')" class="px-5 py-2.5 rounded-xl bg-[#181A20] hover:bg-[#22242C] text-[#D8CBB3] hover:text-white border border-[rgba(216,203,179,0.14)] font-medium transition-all">
+                Read Core Thesis
+              </button>
+            </div>
+
+            <div class="hidden sm:flex items-center space-x-2 font-mono text-[11px] text-[#A39985]">
+              <span>PAGE 01 / 06</span>
+              <span class="text-[rgba(216,203,179,0.3)]">•</span>
+              <span class="pulse-glow text-[#2F6BFF]">SCROLL DOWN ↓</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- PAGE 02: THESIS & AXIOM (FULL-PAGE BLOCK)  -->
+      <!-- ========================================== -->
+      <section id="thesis" class="full-page-block px-4 sm:px-6 max-w-6xl mx-auto border-t border-[rgba(216,203,179,0.08)]">
+        <div class="space-y-6 sm:space-y-8 my-auto">
+          <!-- Section Eyebrow -->
+          <div class="space-y-2">
+            <div class="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
+              <span class="w-2 h-2 rounded-full bg-[#2F6BFF]"></span>
+              <span>02. OPERATIONAL THESIS & FIRST PRINCIPLES</span>
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-display font-bold text-[#F5EFE6] tracking-tight">
+              The Deterministic AI Axiom
+            </h2>
+            <p class="text-sm text-[#A39985] font-mono max-w-2xl">
+              Moving from unpredictable generative probabilistic hype to mathematically provable, human-verified industrial computation.
+            </p>
+          </div>
+
+          <!-- Signature Axiom Banner (Mammut Highlight Row) -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] border-l-4 border-l-[#2F6BFF] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_15px_40px_rgba(0,0,0,0.3)]">
+            <div class="space-y-2">
+              <div class="font-mono text-xs font-semibold text-[#2F6BFF] tracking-wider uppercase flex items-center space-x-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                <span>Core Operational Axiom</span>
+              </div>
+              <p class="text-2xl sm:text-4xl font-display font-extrabold text-[#F5EFE6]">
+                &ldquo;AI reads. People confirm. Rules decide.&rdquo;
+              </p>
+              <p class="text-xs sm:text-sm text-[#A39985] font-sans">
+                Replacing generative LLM hallucinations with multimodal vision extraction, domain-expert signoffs, and exact mathematical code.
+              </p>
+            </div>
+
+            <div class="flex items-center space-x-3 shrink-0 font-mono text-xs">
+              <span class="px-3 py-1.5 rounded-lg bg-[#101114] text-[#D8CBB3] border border-[rgba(216,203,179,0.12)]">
+                ZERO HALLUCINATION
+              </span>
+              <span class="px-3 py-1.5 rounded-lg bg-[#2F6BFF]/15 text-[#2F6BFF] border border-[#2F6BFF]/30 font-semibold">
+                SOVEREIGN LEDGERS
+              </span>
+            </div>
+          </div>
+
+          <!-- Bento Grid: The 3 Operational Pillars -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
+            <div class="p-5 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.12)] space-y-2 hover:border-[#2F6BFF]/40 transition-colors">
+              <div class="text-[#2F6BFF] font-bold text-sm">01. AI READS</div>
+              <h3 class="text-base font-display font-bold text-[#F5EFE6]">Multimodal Vision Schemas</h3>
+              <p class="font-sans text-xs text-[#D8CBB3] leading-relaxed">
+                Extracts unstructured mill certificates, receipts, and bills into strictly typed Pydantic models with zero hallucination.
+              </p>
+              <div class="pt-2 text-[10px] text-[#A39985]">Gemini Multimodal • Pydantic • OCR Ingestion</div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.12)] space-y-2 hover:border-[#2F6BFF]/40 transition-colors">
+              <div class="text-[#2F6BFF] font-bold text-sm">02. PEOPLE CONFIRM</div>
+              <h3 class="text-base font-display font-bold text-[#F5EFE6]">Sovereign Human Interlocks</h3>
+              <p class="font-sans text-xs text-[#D8CBB3] leading-relaxed">
+                Human officers retain absolute veto before irreversible customs filings. Authenticated with SHA-256 cryptographic audit logs.
+              </p>
+              <div class="pt-2 text-[10px] text-[#A39985]">Cryptographic Audits • Sovereign Cloud</div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.12)] space-y-2 hover:border-[#2F6BFF]/40 transition-colors">
+              <div class="text-[#2F6BFF] font-bold text-sm">03. RULES DECIDE</div>
+              <h3 class="text-base font-display font-bold text-[#F5EFE6]">Deterministic Math Code</h3>
+              <p class="font-sans text-xs text-[#D8CBB3] leading-relaxed">
+                Formulas and scheduling run in isolated Python sandboxes, PuLP MILP, and Wasm dynamic programming—never generative text.
+              </p>
+              <div class="pt-2 text-[10px] text-[#A39985]">Exact Math • PuLP MILP • Python Sandboxes</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- PAGE 03: SELECTED WORK (FULL-PAGE BLOCK)   -->
+      <!-- ========================================== -->
+      <section id="work" class="full-page-block px-4 sm:px-6 max-w-6xl mx-auto border-t border-[rgba(216,203,179,0.08)]">
+        <div class="space-y-4 my-auto">
+          <!-- Section Header & System Tabs -->
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-3">
+            <div class="space-y-1">
+              <div class="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
+                <span class="w-2 h-2 rounded-full bg-[#2F6BFF]"></span>
+                <span>03. FEATURED SYSTEMS & PRODUCTION DEPLOYMENTS</span>
+              </div>
+              <h2 class="text-2xl sm:text-4xl font-display font-bold text-[#F5EFE6] tracking-tight">
+                Selected Work
+              </h2>
+            </div>
+
+            <!-- System Selector Tabs -->
+            <div class="flex flex-wrap items-center gap-1 p-1 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] font-mono text-xs">
+              <button onclick="goToSlide(0)" id="tab-btn-waylosa" class="px-2.5 py-1.5 rounded-lg bg-[#2F6BFF] text-white font-semibold transition-all">
+                WAYLOSA
+              </button>
+              <button onclick="goToSlide(1)" id="tab-btn-nasa-fleet" class="px-2.5 py-1.5 rounded-lg text-[#D8CBB3] hover:text-white transition-all">
+                NASA FLEET
+              </button>
+              <button onclick="goToSlide(2)" id="tab-btn-conformal-rul" class="px-2.5 py-1.5 rounded-lg text-[#D8CBB3] hover:text-white transition-all">
+                CONFORMAL UQ
+              </button>
+              <button onclick="goToSlide(3)" id="tab-btn-cimex" class="px-2.5 py-1.5 rounded-lg text-[#D8CBB3] hover:text-white transition-all">
+                CIMEX CBAM
+              </button>
+              <button onclick="goToSlide(4)" id="tab-btn-cloudserve" class="px-2.5 py-1.5 rounded-lg text-[#D8CBB3] hover:text-white transition-all">
+                CLOUDSERVE
+              </button>
+            </div>
+          </div>
+
+          <!-- INTERACTIVE SOFTWARE MOCKUP FRAME (WITH HARDWARE-ACCELERATED SWIPE ENGINE) -->
+          <div class="mockup-window relative group">
+            <!-- Window Title Bar with Swipe Controls -->
+            <div class="px-4 py-3 bg-[#13151A] border-b border-[rgba(216,203,179,0.1)] flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <div class="flex items-center space-x-1.5">
+                  <span class="w-3 h-3 rounded-full bg-[#FF5F56] inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-[#FFBD2E] inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-[#27C93F] inline-block"></span>
+                </div>
+                <span id="window-url" class="font-mono text-xs text-[#A39985] hidden sm:inline-block">
+                  system://waylosa.engine/dynamic-programming-scheduler
+                </span>
+              </div>
+
+              <!-- Center: Swipe / Drag Hint Badge & Index Counter -->
+              <div class="flex items-center space-x-3 font-mono text-xs">
+                <span id="slide-counter" class="px-2 py-0.5 rounded bg-[#101114] text-[#2F6BFF] text-[11px] font-semibold border border-[rgba(216,203,179,0.12)]">
+                  01 / 05
+                </span>
+                <div class="hidden md:flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-[#101114] text-[#A39985] text-[10px] border border-[rgba(216,203,179,0.1)]">
+                  <span>←</span>
+                  <span class="pulse-glow text-[#2F6BFF]">DRAG OR SWIPE</span>
+                  <span>→</span>
+                </div>
+              </div>
+
+              <!-- Right: Prev / Next Chevron Nav + Case Study Button -->
+              <div class="flex items-center space-x-2 font-mono text-xs">
+                <div class="flex items-center space-x-1">
+                  <button onclick="prevSlide()" aria-label="Previous System" class="w-7 h-7 rounded-lg bg-[#101114] border border-[rgba(216,203,179,0.18)] hover:border-[#2F6BFF] text-[#D8CBB3] hover:text-white flex items-center justify-center transition-all">
+                    ‹
+                  </button>
+                  <button onclick="nextSlide()" aria-label="Next System" class="w-7 h-7 rounded-lg bg-[#101114] border border-[rgba(216,203,179,0.18)] hover:border-[#2F6BFF] text-[#D8CBB3] hover:text-white flex items-center justify-center transition-all">
+                    ›
+                  </button>
+                </div>
+
+                <button id="window-case-study-btn" onclick="showSubpage('waylosa')" class="hidden sm:flex text-[#F5EFE6] hover:text-[#2F6BFF] items-center space-x-1 font-semibold ml-2 transition-colors">
+                  <span>Case Study</span>
+                  <span>→</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Window Viewport Container (Draggable / Swipeable) -->
+            <div id="swipe-viewport" class="swipe-container relative overflow-hidden">
+              <!-- Floating Left / Right Edge Navigation Chevrons on Hover -->
+              <button onclick="prevSlide()" aria-label="Previous System" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#101114]/90 backdrop-blur border border-[rgba(216,203,179,0.2)] text-[#D8CBB3] hover:text-[#2F6BFF] hover:border-[#2F6BFF] flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-xl hidden sm:flex text-lg">
+                ‹
+              </button>
+              <button onclick="nextSlide()" aria-label="Next System" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#101114]/90 backdrop-blur border border-[rgba(216,203,179,0.2)] text-[#D8CBB3] hover:text-[#2F6BFF] hover:border-[#2F6BFF] flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-xl hidden sm:flex text-lg">
+                ›
+              </button>
+
+              <!-- Sliding Flex Track (Pre-rendered) -->
+              <div id="mockup-track" class="swipe-track">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+            <!-- Bottom Swipe Indicator & Interactive Navigation Strip -->
+            <div class="px-4 sm:px-6 py-2.5 bg-[#13151A] border-t border-[rgba(216,203,179,0.1)] flex flex-col sm:flex-row items-center justify-between gap-2 font-mono text-xs">
+              <!-- 5-segment interactive pill indicators -->
+              <div class="flex items-center space-x-2 w-full sm:w-auto">
+                <button onclick="goToSlide(0)" id="dot-0" class="h-2 rounded-full transition-all duration-300 w-8 bg-[#2F6BFF]" title="01 Waylosa"></button>
+                <button onclick="goToSlide(1)" id="dot-1" class="h-2 rounded-full transition-all duration-300 w-2.5 bg-[rgba(216,203,179,0.2)] hover:bg-[#2F6BFF]/60" title="02 NASA Fleet"></button>
+                <button onclick="goToSlide(2)" id="dot-2" class="h-2 rounded-full transition-all duration-300 w-2.5 bg-[rgba(216,203,179,0.2)] hover:bg-[#2F6BFF]/60" title="03 Conformal UQ"></button>
+                <button onclick="goToSlide(3)" id="dot-3" class="h-2 rounded-full transition-all duration-300 w-2.5 bg-[rgba(216,203,179,0.2)] hover:bg-[#2F6BFF]/60" title="04 CImEx CBAM"></button>
+                <button onclick="goToSlide(4)" id="dot-4" class="h-2 rounded-full transition-all duration-300 w-2.5 bg-[rgba(216,203,179,0.2)] hover:bg-[#2F6BFF]/60" title="05 CloudServe"></button>
+              </div>
+
+              <div class="flex items-center space-x-4 text-[11px] text-[#A39985]">
+                <span class="hidden md:inline">Swipe or use ← / → keys</span>
+                <button onclick="showSubpage(slugs[currentIndex])" class="text-[#2F6BFF] hover:underline flex items-center space-x-1">
+                  <span>Inspect Full Case Study</span>
+                  <span>↗</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- PAGE 04: ARCHITECTURE CAPABILITIES         -->
+      <!-- ========================================== -->
+      <section id="capabilities" class="full-page-block px-4 sm:px-6 max-w-6xl mx-auto border-t border-[rgba(216,203,179,0.08)]">
+        <div class="space-y-6 my-auto">
+          <div class="space-y-1">
+            <div class="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
+              <span class="w-2 h-2 rounded-full bg-[#2F6BFF]"></span>
+              <span>04. ARCHITECTURAL CAPABILITIES</span>
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-display font-bold text-[#F5EFE6] tracking-tight">
+              How I Architect Systems
+            </h2>
+            <p class="text-sm text-[#A39985] font-mono">
+              Click each capability to expand the engineering specifications and applied tech stack.
+            </p>
+          </div>
+
+          <!-- Expandable Accordion List -->
+          <div class="space-y-3 font-mono">
+            <!-- Item 1 -->
+            <div class="accordion-item active p-5 sm:p-6 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] cursor-pointer transition-all hover:border-[rgba(216,203,179,0.25)]" onclick="toggleAccordion(this)">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                  <span class="text-[#2F6BFF] font-bold text-base">01</span>
+                  <h3 class="text-base sm:text-xl font-display font-bold text-[#F5EFE6]">Multimodal Vision-to-ERP Ingestion</h3>
+                </div>
+                <span class="accordion-arrow text-xl text-[#A39985] transition-transform">→</span>
+              </div>
+              <div class="accordion-content pt-3 space-y-2 font-sans text-xs sm:text-sm text-[#D8CBB3]">
+                <p>
+                  Transforming unstructured physical-world artifacts—scanned mill test certificates, weighbridge receipts, bill of ladings, and handwritten dispatch records—into strongly typed Pydantic models with zero hallucination. Directly integrating into enterprise SAP FI/CO, Procure-to-Pay (P2P), and PostgreSQL ledgers.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-1 font-mono text-xs">
+                  <span class="px-2 py-0.5 rounded bg-[#101114] text-[#A39985]">Gemini Multimodal</span>
+                  <span class="px-2 py-0.5 rounded bg-[#101114] text-[#A39985]">Pydantic Schemas</span>
+                  <span class="px-2 py-0.5 rounded bg-[#101114] text-[#A39985]">SAP FI/CO Integration</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item p-5 sm:p-6 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] cursor-pointer transition-all hover:border-[rgba(216,203,179,0.25)]" onclick="toggleAccordion(this)">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                  <span class="text-[#2F6BFF] font-bold text-base">02</span>
+                  <h3 class="text-base sm:text-xl font-display font-bold text-[#F5EFE6]">Sovereign Human-in-the-Loop Interlocks</h3>
+                </div>
+                <span class="accordion-arrow text-xl text-[#A39985] transition-transform">→</span>
+              </div>
+              <div class="accordion-content pt-3 space-y-2 font-sans text-xs sm:text-sm text-[#D8CBB3]">
+                <p>
+                  Autonomous systems must never submit regulatory declarations or trigger irreversible factory downtime without sovereign oversight. I build air-gapped verification gates where human officers retain absolute veto power, authenticated by SHA-256 cryptographic audit logs.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-1 font-mono text-xs">
+                  <span class="px-2 py-0.5 rounded bg-[#101114] text-[#A39985]">Cryptographic Audits</span>
+                  <span class="px-2 py-0.5 rounded bg-[#101114] text-[#A39985]">Role-Based Gates</span>
+                  <span class="px-2 py-0.5 rounded bg-[#101114] text-[#A39985]">Sovereign Cloud (asia-south1)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item p-5 sm:p-6 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] cursor-pointer transition-all hover:border-[rgba(216,203,179,0.25)]" onclick="toggleAccordion(this)">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                  <span class="text-[#2F6BFF] font-bold text-base">03</span>
+                  <h3 class="text-base sm:text-xl font-display font-bold text-[#F5EFE6]">Exact Mathematical Operations Research</h3>
+                </div>
+                <span class="accordion-arrow text-xl text-[#A39985] transition-transform">→</span>
+              </div>
+              <div class="accordion-content pt-3 space-y-2 font-sans text-xs sm:text-sm text-[#D8CBB3]">
+                <p>
+                  Eliminating LLM math hallucinations completely. All scheduling constraints, fleet overhaul allocations, and stoichiometric carbon math run in isolated Python sandboxes, Mixed-Integer Linear Programming (PuLP), and exact dynamic programming.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-1 font-mono text-xs">
+                  <span class="px-2 py-0.5 rounded bg-[#101114] text-[#A39985]">PuLP (MILP)</span>
+                  <span class="px-2 py-0.5 rounded bg-[#101114] text-[#A39985]">Exact Dynamic Programming</span>
+                  <span class="px-2 py-0.5 rounded bg-[#101114] text-[#A39985]">Pyodide (Wasm)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="accordion-item p-5 sm:p-6 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] cursor-pointer transition-all hover:border-[rgba(216,203,179,0.25)]" onclick="toggleAccordion(this)">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                  <span class="text-[#2F6BFF] font-bold text-base">04</span>
+                  <h3 class="text-base sm:text-xl font-display font-bold text-[#F5EFE6]">Calibrated Uncertainty Quantification (UQ)</h3>
+                </div>
+                <span class="accordion-arrow text-xl text-[#A39985] transition-transform">→</span>
+              </div>
+              <div class="accordion-content pt-3 space-y-2 font-sans text-xs sm:text-sm text-[#D8CBB3]">
+                <p>
+                  Point predictions fail catastrophically under non-stationary operating shifts. I develop calibrated conformal prediction intervals (CQR) that provide statistical coverage guarantees engine-by-engine, mitigating critical downtime.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-1 font-mono text-xs">
+                  <span class="px-2 py-0.5 rounded bg-[#101114] text-[#A39985]">Conformal Prediction (CQR)</span>
+                  <span class="px-2 py-0.5 rounded bg-[#101114] text-[#A39985]">Distribution Shift Modeling</span>
+                  <span class="px-2 py-0.5 rounded bg-[#101114] text-[#A39985]">NASA C-MAPSS FD004</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- PAGE 05: RESEARCH LINEAGE (FULL-PAGE BLOCK)-->
+      <!-- ========================================== -->
+      <section id="research" class="full-page-block px-4 sm:px-6 max-w-6xl mx-auto border-t border-[rgba(216,203,179,0.08)]">
+        <div class="space-y-6 my-auto">
+          <div class="space-y-1">
+            <div class="flex items-center space-x-2 text-xs font-mono text-[#2F6BFF]">
+              <span class="w-2 h-2 rounded-full bg-[#2F6BFF]"></span>
+              <span>05. SCIENTIFIC PAPERS & CREDENTIALS</span>
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-display font-bold text-[#F5EFE6] tracking-tight">
+              Research Lineage
+            </h2>
+            <p class="text-sm text-[#A39985] font-mono">
+              Rigorous academic grounding spanning mechanical engineering, data science, and forward-deployed AI.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <!-- Manuscripts Column -->
+            <div class="lg:col-span-7 space-y-3.5">
+              <div class="text-xs font-mono text-[#2F6BFF] uppercase">Manuscripts in Peer Review</div>
+
+              <div class="p-5 sm:p-6 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-2 hover:border-[#2F6BFF]/40 transition-colors">
+                <div class="flex justify-between text-xs font-mono">
+                  <span class="text-[#2F6BFF] bg-[#2F6BFF]/10 px-2 py-0.5 rounded border border-[#2F6BFF]/30">UNDER REVIEW // 2026</span>
+                  <span class="text-[#A39985]">IOP Publishing</span>
+                </div>
+                <h3 class="text-sm sm:text-base font-display font-bold text-[#F5EFE6]">
+                  Engine-Level Reliability of Conformal RUL Uncertainty Under Operating-Condition Distribution Shift in C-MAPSS FD004 (Part I)
+                </h3>
+                <p class="text-xs text-[#D8CBB3] leading-relaxed">
+                  <strong>Hemanth Dadi.</strong> Submitted to the <em>Journal of Reliability Science and Engineering</em>. Code: <a href="https://github.com/HemanthDadi1/fdo04-degradation-aware-rul" target="_blank" class="text-[#2F6BFF] hover:underline">github.com/HemanthDadi1/fdo04-degradation-aware-rul</a>
+                </p>
+              </div>
+
+              <div class="p-5 sm:p-6 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-2 hover:border-[#2F6BFF]/40 transition-colors">
+                <div class="flex justify-between text-xs font-mono">
+                  <span class="text-[#D8CBB3] bg-[#222220] px-2 py-0.5 rounded border border-[rgba(216,203,179,0.2)]">IN PREPARATION // 2026</span>
+                  <span class="text-[#A39985]">Reliability Engineering</span>
+                </div>
+                <h3 class="text-sm sm:text-base font-display font-bold text-[#F5EFE6]">
+                  Engine-Level Reliability of Conformal RUL Uncertainty Under Operating Shift (Part II): Does a Longer Temporal Context Help?
+                </h3>
+                <p class="text-xs text-[#D8CBB3] leading-relaxed">
+                  <strong>Hemanth Dadi.</strong> Investigates temporal history context fixing mid-life failures under operational distribution shifts.
+                </p>
+              </div>
+            </div>
+
+            <!-- Academic Degrees Column -->
+            <div class="lg:col-span-5 space-y-3 font-mono text-xs">
+              <div class="text-[#2F6BFF] uppercase pb-1">Academic Pedigree</div>
+
+              <div class="p-4 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-1 hover:border-[#2F6BFF]/40 transition-colors">
+                <div class="flex justify-between text-[#F5EFE6] font-bold">
+                  <span>M.S., Data Science</span>
+                  <span class="text-[#2F6BFF]">GPA 3.73 / 4.00</span>
+                </div>
+                <div class="text-[#D8CBB3]">Stevens Institute of Technology, Hoboken, NJ, USA</div>
+                <div class="text-[10px] text-[#A39985]">Stevens Master&apos;s Scholarship &bull; 2023–2024</div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-1 hover:border-[#2F6BFF]/40 transition-colors">
+                <div class="flex justify-between text-[#F5EFE6] font-bold">
+                  <span>Forward Deployed AI Eng.</span>
+                  <span class="text-[#2F6BFF]">PG Certificate</span>
+                </div>
+                <div class="text-[#D8CBB3]">Indian Institute of Technology Roorkee (IIT Roorkee)</div>
+                <div class="text-[10px] text-[#A39985]">Problem Structuring, AI Governance, LLM Systems &bull; 2026</div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-1 hover:border-[#2F6BFF]/40 transition-colors">
+                <div class="flex justify-between text-[#F5EFE6] font-bold">
+                  <span>B.Tech., Mechanical Eng.</span>
+                  <span class="text-[#2F6BFF]">CGPA 8.71 / 10</span>
+                </div>
+                <div class="text-[#D8CBB3]">V. R. Siddhartha Engineering College (Autonomous, JNTUK)</div>
+                <div class="text-[10px] text-[#A39985]">First Class with Distinction &bull; 2018–2022</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- PAGE 06: CONTACT & TRANSMISSION            -->
+      <!-- ========================================== -->
+      <section id="contact" class="full-page-block px-4 sm:px-6 max-w-6xl mx-auto border-t border-[rgba(216,203,179,0.08)]">
+        <div class="space-y-6 my-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-5 space-y-4">
+              <div class="text-xs font-mono text-[#2F6BFF]">06. DIRECT TRANSMISSION // FOUNDER DESK</div>
+              <h2 class="text-3xl sm:text-4xl font-display font-bold text-[#F5EFE6]">Let&apos;s Architect Systems</h2>
+              <p class="text-sm text-[#A39985] leading-relaxed font-sans">
+                Whether you are building forward-deployed AI for physical industrial facilities, solving mission-critical operations research problems, or looking for advisory:
+              </p>
+
+              <div class="space-y-2.5 font-mono text-xs pt-1">
+                <div class="p-3.5 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] flex items-center justify-between">
+                  <div>
+                    <div class="text-[10px] text-[#A39985]">DIRECT EMAIL</div>
+                    <a href="mailto:hemanthdadi3@gmail.com" class="text-[#F5EFE6] hover:text-[#2F6BFF]">hemanthdadi3@gmail.com</a>
+                  </div>
+                  <button onclick="copyEmail()" class="p-1 px-2.5 rounded-md bg-[#101114] border border-[rgba(216,203,179,0.16)] text-[#D8CBB3] hover:text-white">COPY</button>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] flex items-center justify-between">
+                  <div>
+                    <div class="text-[10px] text-[#A39985]">TELEPHONE / WHATSAPP</div>
+                    <a href="tel:+917780370182" class="text-[#F5EFE6] hover:text-[#2F6BFF]">+91 7780370182</a>
+                  </div>
+                  <span class="text-[#2F6BFF] text-[10px]">ACTIVE</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2.5 pt-1">
+                  <a href="https://www.linkedin.com/in/hemanth-d-0b95a5201/" target="_blank" class="p-3 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] hover:border-[#2F6BFF]/60 text-center text-[#D8CBB3] hover:text-white transition-all">
+                    LinkedIn Profile ↗
+                  </a>
+                  <a href="https://github.com/HemanthDadi1" target="_blank" class="p-3 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] hover:border-[#2F6BFF]/60 text-center text-[#D8CBB3] hover:text-white transition-all">
+                    GitHub Repos ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Dispatch Box -->
+            <div class="lg:col-span-7 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.16)] p-6 sm:p-7 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-[rgba(216,203,179,0.12)] font-mono text-xs">
+                <span class="text-[#F5EFE6] font-semibold">FOUNDER TRANSMISSION DISPATCH</span>
+                <span class="text-[#A39985] text-[10px]">HYDERABAD NODE</span>
+              </div>
+
+              <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-3 font-mono text-xs">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div class="space-y-1">
+                    <label class="text-[#A39985] text-[10px]">YOUR NAME</label>
+                    <input type="text" required placeholder="e.g. Vikram Sharma" class="w-full px-3 py-2 rounded-lg bg-[#101114] border border-[rgba(216,203,179,0.16)] text-[#F5EFE6] focus:outline-none focus:border-[#2F6BFF]">
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-[#A39985] text-[10px]">CORPORATE EMAIL</label>
+                    <input type="email" required placeholder="name@company.com" class="w-full px-3 py-2 rounded-lg bg-[#101114] border border-[rgba(216,203,179,0.16)] text-[#F5EFE6] focus:outline-none focus:border-[#2F6BFF]">
+                  </div>
+                </div>
+
+                <div class="space-y-1">
+                  <label class="text-[#A39985] text-[10px]">SYSTEM REQUIREMENTS & SCOPE</label>
+                  <textarea rows="3" required placeholder="Tell me about your industrial facility, operations research problem, or architecture timeline..." class="w-full px-3 py-2 rounded-lg bg-[#101114] border border-[rgba(216,203,179,0.16)] text-[#F5EFE6] focus:outline-none focus:border-[#2F6BFF] resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-2.5 rounded-lg bg-[#2F6BFF] text-white font-bold tracking-wider uppercase hover:bg-[#4D82FF] transition-all shadow-[0_0_20px_rgba(47,107,255,0.4)] flex items-center justify-center space-x-2">
+                  <span>TRANSMIT DISPATCH TO FOUNDER</span>
+                  <span>↗</span>
+                </button>
+              </form>
+
+              <div id="form-success" class="hidden py-8 text-center space-y-2 font-mono">
+                <div class="text-[#2F6BFF] text-sm font-bold">✓ DISPATCH QUEUED TO FOUNDER STREAM</div>
+                <div class="text-[#A39985] text-xs">Direct response channel active within 12 hours from Hyderabad node.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Micro Status Strip -->
+          <div class="border-t border-[rgba(216,203,179,0.1)] pt-4 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[#A39985] gap-2">
+            <div>
+              <span class="text-[#2F6BFF]">● SYSTEM ONLINE</span> // HEMANTH DADI • HYDERABAD, IN (17.3850° N, 78.4867° E)
+            </div>
+            <div>
+              &copy; 2026 Hemanth Dadi. &ldquo;AI reads. People confirm. Rules decide.&rdquo;
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- END #main-view -->
+
+    <!-- DEDICATED CASE STUDY SUBPAGE VIEW -->
+    <div id="subpage-view" class="hidden relative z-20 py-24 px-4 sm:px-6 max-w-4xl mx-auto page-view-transition page-view-active">
+      <button onclick="showHomeView()" class="inline-flex items-center space-x-2 text-xs font-mono text-[#A39985] hover:text-[#2F6BFF] mb-8 transition-colors">
+        <span>← RETURN TO PORTFOLIO INDEX</span>
+      </button>
+      <div id="subpage-content" class="space-y-8"></div>
+      <div class="pt-8 mt-12 border-t border-[rgba(216,203,179,0.14)] flex justify-between items-center font-mono text-xs">
+        <button onclick="showHomeView()" class="text-[#A39985] hover:text-[#2F6BFF]">← Return to Index</button>
+        <a href="mailto:hemanthdadi3@gmail.com" class="text-[#2F6BFF] hover:underline">Discuss this architecture →</a>
+      </div>
+    </div>
+
+  </div><!-- END #scroll-container -->
+
+  <!-- Interactive JavaScript Engine -->
+<script>
+    const systemsData = {
+      "waylosa": {
+        url: "system://waylosa.engine/dynamic-programming-scheduler",
+        title: "Waylosa Travel Intelligence",
+        role: "Founding AI Engineer &bull; Aug 2026 – Present",
+        category: "Industrial AI",
+        summary: "Designed the synthesis engine as 'model proposes, code verifies': language models recommend destinations while deterministic dynamic programming algorithms validate, schedule, and repair itineraries.",
+        metrics: [
+          { label: "Solver Speed", value: "30 ms (Exact DP)" },
+          { label: "Prompt Reduction", value: "-71% Token Overhead" },
+          { label: "Automated Tests", value: "949 CI Tests Passing" }
+        ],
+        interfaceHtml: `
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div class="lg:col-span-7 space-y-4">
+              <div class="inline-block px-2.5 py-0.5 rounded bg-[#2F6BFF]/15 text-[#2F6BFF] font-mono text-xs border border-[#2F6BFF]/30">
+                ACTIVE PRODUCTION ENGINE
+              </div>
+              <h3 class="text-2xl font-display font-bold text-[#F5EFE6]">
+                Weighted Interval Scheduling in 30ms
+              </h3>
+              <p class="text-sm text-[#D8CBB3] font-sans leading-relaxed">
+                Generative models hallucinate impossible opening hours, ignore travel fatigue, and inflate prompt tokens by 3x. Moving day sequencing out of the prompt and into dynamic programming guaranteed 100% valid schedules across all benchmark trips.
+              </p>
+              <div class="flex flex-wrap gap-2 font-mono text-xs pt-1">
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">FastAPI</span>
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">PostgreSQL / PostGIS</span>
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">Dynamic Programming</span>
+              </div>
+            </div>
+
+            <!-- Simulated Interface Card -->
+            <div class="lg:col-span-5 p-4 rounded-xl bg-[#101114] border border-[rgba(216,203,179,0.14)] space-y-3 font-mono text-xs">
+              <div class="text-[11px] text-[#A39985] flex justify-between border-b border-[rgba(216,203,179,0.08)] pb-2">
+                <span>DP_SOLVER_OUTPUT</span>
+                <span class="text-[#2F6BFF]">0 OVERLAPS</span>
+              </div>
+              <div class="space-y-1.5 text-[11px]">
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>09:00 - 11:30 &bull; Historic Sight</span>
+                  <span class="text-[#2F6BFF]">VALID</span>
+                </div>
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>12:00 - 01:30 &bull; Artisan Lunch</span>
+                  <span class="text-[#2F6BFF]">FATIGUE 0.12</span>
+                </div>
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>02:30 - 05:00 &bull; Cultural Walk</span>
+                  <span class="text-[#2F6BFF]">DAYLIGHT OK</span>
+                </div>
+              </div>
+              <div class="pt-2 text-[10px] text-[#A39985] flex justify-between border-t border-[rgba(216,203,179,0.08)]">
+                <span>Prompt Savings: 71%</span>
+                <span class="text-[#2F6BFF]">Latency: 28.4ms</span>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      "nasa-fleet": {
+        url: "system://pulp.optimizer/hangar-bay-allocation-milp",
+        title: "NASA Fleet Maintenance Optimizer",
+        role: "Independent Researcher &bull; Mar – May 2026",
+        category: "Operations Research",
+        summary: "Combined a BiLSTM-attention RUL neural network with Mixed-Integer Linear Programming (PuLP) to schedule commercial turbofans under strict 3-bay hangar capacity.",
+        metrics: [
+          { label: "In-Flight Failures", value: "11 → 0 Failures" },
+          { label: "RUL Error", value: "RMSE 15.90 cycles" },
+          { label: "Hangar Bays", value: "3 Bays / Cycle" }
+        ],
+        interfaceHtml: `
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div class="lg:col-span-7 space-y-4">
+              <div class="inline-block px-2.5 py-0.5 rounded bg-[#2F6BFF]/15 text-[#2F6BFF] font-mono text-xs border border-[#2F6BFF]/30">
+                OPERATIONS RESEARCH & MILP
+              </div>
+              <h3 class="text-2xl font-display font-bold text-[#F5EFE6]">
+                Eliminating 11 In-Flight Turbofan Failures
+              </h3>
+              <p class="text-sm text-[#D8CBB3] font-sans leading-relaxed">
+                Scheduling fleet maintenance directly on point predictions leaves engines failing before their hangar slot. By pairing BiLSTM degradation curves with tiered safety buffers and mixed-integer constraints, failures dropped to zero.
+              </p>
+              <div class="flex flex-wrap gap-2 font-mono text-xs pt-1">
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">PyTorch BiLSTM</span>
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">PuLP MILP</span>
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">NASA C-MAPSS</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5 p-4 rounded-xl bg-[#101114] border border-[rgba(216,203,179,0.14)] space-y-3 font-mono text-xs">
+              <div class="text-[11px] text-[#A39985] flex justify-between border-b border-[rgba(216,203,179,0.08)] pb-2">
+                <span>MILP_HANGAR_SCHEDULE</span>
+                <span class="text-[#2F6BFF]">CAPACITY: 3/3 BAYS</span>
+              </div>
+              <div class="space-y-1.5 text-[11px]">
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>Bay 01: Engine #42 Overhaul</span>
+                  <span class="text-emerald-400">SLOT ASSIGNED</span>
+                </div>
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>Bay 02: Engine #88 Overhaul</span>
+                  <span class="text-emerald-400">SLOT ASSIGNED</span>
+                </div>
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>Bay 03: Tiered Buffer Queue</span>
+                  <span class="text-[#2F6BFF]">BUFFER: +11 CYC</span>
+                </div>
+              </div>
+              <div class="pt-2 text-[10px] text-[#A39985] flex justify-between border-t border-[rgba(216,203,179,0.08)]">
+                <span>Premature Failures: 0</span>
+                <span class="text-emerald-400">Safety: 100%</span>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      "conformal-rul": {
+        url: "system://conformal.cqr/balanced-engine-coverage",
+        title: "Balanced Engine Conformal UQ (CQR)",
+        role: "Independent Researcher &bull; May 2026 – Present",
+        category: "Research & UQ",
+        summary: "Formulated Balanced Engine CQR, establishing unit-level conformal prediction intervals for remaining useful life under severe operating shifts on NASA C-MAPSS FD004.",
+        metrics: [
+          { label: "Calibrated Coverage", value: "91–92%" },
+          { label: "Under-Covered Cut", value: "23 → 7 Engines" },
+          { label: "Peer Review", value: "IOP Publishing 2026" }
+        ],
+        interfaceHtml: `
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div class="lg:col-span-7 space-y-4">
+              <div class="inline-block px-2.5 py-0.5 rounded bg-[#2F6BFF]/15 text-[#2F6BFF] font-mono text-xs border border-[#2F6BFF]/30">
+                PEER-REVIEWED RESEARCH // IOP 2026
+              </div>
+              <h3 class="text-2xl font-display font-bold text-[#F5EFE6]">
+                Guaranteed Uncertainty Under Severe Shift
+              </h3>
+              <p class="text-sm text-[#D8CBB3] font-sans leading-relaxed">
+                Pooled coverage hides individual failures: an 82% pooled metric concealed that 10 out of 24 test engines failed miserably. Balanced Engine CQR applies calibration engine-by-engine to maintain 91–92% coverage across operating shifts.
+              </p>
+              <div class="flex flex-wrap gap-2 font-mono text-xs pt-1">
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">Conformal Prediction</span>
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">Quantile Regression</span>
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">Five-Seed Reporting</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5 p-4 rounded-xl bg-[#101114] border border-[rgba(216,203,179,0.14)] space-y-3 font-mono text-xs">
+              <div class="text-[11px] text-[#A39985] flex justify-between border-b border-[rgba(216,203,179,0.08)] pb-2">
+                <span>CQR_CALIBRATION_TELEMETRY</span>
+                <span class="text-[#2F6BFF]">TARGET: 80.0%</span>
+              </div>
+              <div class="space-y-1.5 text-[11px]">
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>Pooled Baseline Coverage</span>
+                  <span class="text-red-400">82% (10 Failing)</span>
+                </div>
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>Balanced Engine CQR</span>
+                  <span class="text-[#2F6BFF] font-bold">91.8% Covered</span>
+                </div>
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>Under-covered Units</span>
+                  <span class="text-emerald-400">Cut 23 → 7</span>
+                </div>
+              </div>
+              <div class="pt-2 text-[10px] text-[#A39985] flex justify-between border-t border-[rgba(216,203,179,0.08)]">
+                <span>Validation: 5-Seed Split</span>
+                <span class="text-[#2F6BFF]">Zero Data Leakage</span>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      "cimex": {
+        url: "system://cimex.ledger/annex-v-deterministic-calculator",
+        title: "CImEx Compliance",
+        role: "Founder & Architect &bull; 2026",
+        category: "Enterprise Systems",
+        summary: "AI-powered EU CBAM trade compliance & verified sovereign carbon ledger for Indian steel and fastener exporters facing default EU penalty tariffs.",
+        metrics: [
+          { label: "Emissions Drop", value: "-59% (4.38 → 2.254)" },
+          { label: "Tariff Saved", value: "€849,075 / 1,000t" },
+          { label: "Math Engine", value: "100% Annex V Math" }
+        ],
+        interfaceHtml: `
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div class="lg:col-span-7 space-y-4">
+              <div class="inline-block px-2.5 py-0.5 rounded bg-[#2F6BFF]/15 text-[#2F6BFF] font-mono text-xs border border-[#2F6BFF]/30">
+                SOVEREIGN ENTERPRISE BUILD
+              </div>
+              <h3 class="text-2xl font-display font-bold text-[#F5EFE6]">
+                Shielding Exporters from €10B EU CBAM Tariffs
+              </h3>
+              <p class="text-sm text-[#D8CBB3] font-sans leading-relaxed">
+                Generic LLMs hallucinate numbers and formulas. CImEx parses scanned mill test reports via multimodal vision, gates through sovereign customs officers, and computes Specific Embedded Emissions in isolated deterministic Python code.
+              </p>
+              <div class="flex flex-wrap gap-2 font-mono text-xs pt-1">
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">Python Wasm</span>
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">Gemini Multimodal</span>
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">GCP Mumbai (asia-south1)</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5 p-4 rounded-xl bg-[#101114] border border-[rgba(216,203,179,0.14)] space-y-3 font-mono text-xs">
+              <div class="text-[11px] text-[#A39985] flex justify-between border-b border-[rgba(216,203,179,0.08)] pb-2">
+                <span>EU_ANNEX_V_CALCULATOR</span>
+                <span class="text-[#2F6BFF]">100% MATH</span>
+              </div>
+              <div class="space-y-1.5 text-[11px]">
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>Default BF-BOF Penalty</span>
+                  <span class="text-red-400">4.380 tCO₂/t</span>
+                </div>
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>CImEx Verified Scrap EAF</span>
+                  <span class="text-[#2F6BFF] font-bold">2.254 tCO₂/t (-59%)</span>
+                </div>
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>Tariff Saved (1,000t Batch)</span>
+                  <span class="text-emerald-400 font-bold">+€849,075</span>
+                </div>
+              </div>
+              <div class="pt-2 text-[10px] text-[#A39985] flex justify-between border-t border-[rgba(216,203,179,0.08)]">
+                <span>Audit: SHA-256 Signed</span>
+                <span class="text-[#2F6BFF]">Zero Hallucination</span>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      "cloudserve": {
+        url: "system://cloudserve.gate/grounding-verification-matrix",
+        title: "CloudServe Verified AI Copilot",
+        role: "Forward Deployed AI Engineer &bull; Oct – Nov 2026",
+        category: "Enterprise Systems",
+        summary: "IIT Roorkee Capstone: Analyzed 500 historical tickets and reframed chatbot requests as a deterministic service-delivery problem with 5 strict safety gates.",
+        metrics: [
+          { label: "Grounding Accuracy", value: "95.0%" },
+          { label: "Safety Pipeline", value: "5 Grounding Checks" },
+          { label: "Data Breaches", value: "0% Breaches" }
+        ],
+        interfaceHtml: `
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div class="lg:col-span-7 space-y-4">
+              <div class="inline-block px-2.5 py-0.5 rounded bg-[#2F6BFF]/15 text-[#2F6BFF] font-mono text-xs border border-[#2F6BFF]/30">
+                IIT ROORKEE CAPSTONE // SIMULATED CLIENT
+              </div>
+              <h3 class="text-2xl font-display font-bold text-[#F5EFE6]">
+                Safety Over Volume: 0% Private Data Leaks
+              </h3>
+              <p class="text-sm text-[#D8CBB3] font-sans leading-relaxed">
+                Ordinary LLM validation was inflated to 100% by templated tickets. Grouped cross-validation proved actual accuracy was lower. Designed a 5-check grounding pipeline that automates 16% with zero leaks and escalates everything else.
+              </p>
+              <div class="flex flex-wrap gap-2 font-mono text-xs pt-1">
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">Grouped Cross-Validation</span>
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">Fairness Audits</span>
+                <span class="px-2.5 py-1 rounded bg-[#101114] text-[#A39985]">FastAPI</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5 p-4 rounded-xl bg-[#101114] border border-[rgba(216,203,179,0.14)] space-y-3 font-mono text-xs">
+              <div class="text-[11px] text-[#A39985] flex justify-between border-b border-[rgba(216,203,179,0.08)] pb-2">
+                <span>GROUNDING_SAFETY_PIPELINE</span>
+                <span class="text-[#2F6BFF]">5/5 PASSED</span>
+              </div>
+              <div class="space-y-1.5 text-[11px]">
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>PII & Credential Scrub</span>
+                  <span class="text-emerald-400">PASSED</span>
+                </div>
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>Policy Fact Grounding</span>
+                  <span class="text-emerald-400">PASSED</span>
+                </div>
+                <div class="p-2 rounded bg-[#181A20] text-[#F5EFE6] flex justify-between">
+                  <span>Non-Fluent Language Parity</span>
+                  <span class="text-[#2F6BFF]">100% CLOSED</span>
+                </div>
+              </div>
+              <div class="pt-2 text-[10px] text-[#A39985] flex justify-between border-t border-[rgba(216,203,179,0.08)]">
+                <span>Private Data Leaks: 0</span>
+                <span class="text-emerald-400">Accuracy: 95.0%</span>
+              </div>
+            </div>
+          </div>
+        `
+      }
+    };
+
+    const slugs = ['waylosa', 'nasa-fleet', 'conformal-rul', 'cimex', 'cloudserve'];
+    let currentIndex = 0;
+    const totalSlides = slugs.length;
+    let isDragging = false;
+    let startX = 0;
+    let currentX = 0;
+    let hasMoved = false;
+
+    // Elements
+    const track = document.getElementById('mockup-track');
+    const viewport = document.getElementById('swipe-viewport');
+
+    // Pre-render all 5 slides into the track
+    if (track) {
+      track.innerHTML = slugs.map((slug, idx) => {
+        const data = systemsData[slug];
+        return `
+          <div class="swipe-slide p-6 sm:p-8 space-y-6" data-index="${idx}">
+            ${data.interfaceHtml}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function goToSlide(index, animate = true) {
+      if (index < 0) index = 0;
+      if (index >= totalSlides) index = totalSlides - 1;
+      currentIndex = index;
+      const slug = slugs[currentIndex];
+      const data = systemsData[slug];
+
+      if (track) {
+        track.style.transition = animate ? 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
+        track.style.transform = `translateX(-${currentIndex * 20}%)`;
+      }
+
+      // Update Top Tabs
+      slugs.forEach((s, i) => {
+        const btn = document.getElementById(`tab-btn-${s}`);
+        if (btn) {
+          if (i === currentIndex) {
+            btn.className = "px-3 py-1.5 rounded-lg bg-[#2F6BFF] text-white font-semibold transition-all shadow-[0_0_15px_rgba(47,107,255,0.35)]";
+          } else {
+            btn.className = "px-3 py-1.5 rounded-lg text-[#D8CBB3] hover:text-white transition-all";
+          }
+        }
+        // Update Dots
+        const dot = document.getElementById(`dot-${i}`);
+        if (dot) {
+          if (i === currentIndex) {
+            dot.className = "h-2 rounded-full transition-all duration-300 w-8 bg-[#2F6BFF]";
+          } else {
+            dot.className = "h-2 rounded-full transition-all duration-300 w-2.5 bg-[rgba(216,203,179,0.2)] hover:bg-[#2F6BFF]/60";
+          }
+        }
+      });
+
+      // Update window header
+      const urlEl = document.getElementById("window-url");
+      if (urlEl && data) urlEl.innerText = data.url;
+      const countEl = document.getElementById("slide-counter");
+      if (countEl) countEl.innerText = `0${currentIndex + 1} / 05`;
+      const csBtn = document.getElementById("window-case-study-btn");
+      if (csBtn) csBtn.setAttribute("onclick", `showSubpage('${slug}')`);
+    }
+
+    function selectSystemTab(slug) {
+      const idx = slugs.indexOf(slug);
+      if (idx !== -1) {
+        goToSlide(idx);
+      }
+    }
+
+    function nextSlide() {
+      if (currentIndex < totalSlides - 1) {
+        goToSlide(currentIndex + 1);
+      } else {
+        goToSlide(0); // loop around
+      }
+    }
+
+    function prevSlide() {
+      if (currentIndex > 0) {
+        goToSlide(currentIndex - 1);
+      } else {
+        goToSlide(totalSlides - 1); // loop around
+      }
+    }
+
+    // Touch & Pointer Drag / Swipe Engine
+    function onPointerDown(e) {
+      isDragging = true;
+      hasMoved = false;
+      startX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+      currentX = startX;
+      if (track) track.style.transition = 'none';
+    }
+
+    function onPointerMove(e) {
+      if (!isDragging) return;
+      currentX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+      const diffX = currentX - startX;
+      if (Math.abs(diffX) > 5) hasMoved = true;
+
+      // Elastic resistance at edges
+      let dragOffset = diffX;
+      if ((currentIndex === 0 && diffX > 0) || (currentIndex === totalSlides - 1 && diffX < 0)) {
+        dragOffset = diffX * 0.3;
+      }
+
+      if (track) {
+        track.style.transform = `translateX(calc(-${currentIndex * 20}% + ${dragOffset}px))`;
+      }
+    }
+
+    function onPointerUp(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      const diffX = currentX - startX;
+
+      if (track) {
+        track.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
+      }
+
+      if (diffX < -50) {
+        nextSlide();
+      } else if (diffX > 50) {
+        prevSlide();
+      } else {
+        goToSlide(currentIndex);
+      }
+      startX = 0;
+      currentX = 0;
+    }
+
+    if (viewport) {
+      viewport.addEventListener('pointerdown', onPointerDown);
+      window.addEventListener('pointermove', onPointerMove);
+      window.addEventListener('pointerup', onPointerUp);
+      window.addEventListener('pointercancel', onPointerUp);
+
+      // Touch fallbacks
+      viewport.addEventListener('touchstart', onPointerDown, { passive: true });
+      window.addEventListener('touchmove', onPointerMove, { passive: true });
+      window.addEventListener('touchend', onPointerUp);
+    }
+
+    // Keyboard Arrow navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+      if (e.key === 'ArrowLeft') {
+        prevSlide();
+      } else if (e.key === 'ArrowRight') {
+        nextSlide();
+      }
+    });
+
+    // Accordion Toggle
+    function toggleAccordion(element) {
+      const items = document.querySelectorAll('.accordion-item');
+      items.forEach(item => {
+        if (item === element) {
+          item.classList.toggle('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    // Subpage Navigation with Cinematic Swipe Transitions
+    function showSubpage(slug) {
+      const data = systemsData[slug];
+      if (!data) return;
+
+      const main = document.getElementById("main-view");
+      const sub = document.getElementById("subpage-view");
+
+      // Slide main view out to the left
+      main.classList.remove("page-view-active");
+      main.classList.add("page-view-exit-left");
+
+      setTimeout(() => {
+        main.classList.add("hidden");
+        main.classList.remove("page-view-exit-left");
+
+        // Inject subpage content
+        document.getElementById("subpage-content").innerHTML = `
+          <div class="border-b border-[rgba(216,203,179,0.14)] pb-8 space-y-3">
+            <div class="flex items-center space-x-2 font-mono text-xs">
+              <span class="text-[#2F6BFF] bg-[#2F6BFF]/10 px-2.5 py-0.5 rounded-full border border-[#2F6BFF]/30">${data.category}</span>
+              <span class="text-[#A39985]">${data.role}</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-display font-bold text-[#F5EFE6] tracking-tight">${data.title}</h1>
+            <p class="text-base sm:text-lg text-[#D8CBB3] font-sans leading-relaxed">${data.summary}</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono">
+            ${data.metrics.map(m => `
+              <div class="p-4 rounded-xl bg-[#181A20] border border-[rgba(216,203,179,0.14)]">
+                <div class="text-[10px] text-[#A39985] uppercase">${m.label}</div>
+                <div class="text-xl font-bold text-[#2F6BFF] mt-1">${m.value}</div>
+              </div>
+            `).join('')}
+          </div>
+
+          <div class="space-y-6 font-sans">
+            <div class="p-6 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-2">
+              <h2 class="text-base font-mono font-bold text-[#F5EFE6]"><span class="text-[#2F6BFF]">01.</span> The Systems Problem</h2>
+              <p class="text-sm text-[#D8CBB3] leading-relaxed">${data.summary}</p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-[#181A20] border border-[rgba(216,203,179,0.14)] space-y-2">
+              <h2 class="text-base font-mono font-bold text-[#F5EFE6]"><span class="text-[#2F6BFF]">02.</span> Architecture & Implementation</h2>
+              <div class="text-sm text-[#D8CBB3] leading-relaxed">${data.interfaceHtml}</div>
+            </div>
+          </div>
+        `;
+
+        // Position subpage offscreen right and animate in
+        sub.classList.remove("hidden", "page-view-active");
+        sub.classList.add("page-view-enter-right");
+        window.scrollTo({ top: 0, behavior: "instant" });
+
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            sub.classList.remove("page-view-enter-right");
+            sub.classList.add("page-view-active");
+          }, 20);
+        });
+      }, 250);
+    }
+
+    function showHomeView() {
+      const main = document.getElementById("main-view");
+      const sub = document.getElementById("subpage-view");
+
+      // Slide subpage out to the right
+      sub.classList.remove("page-view-active");
+      sub.classList.add("page-view-enter-right");
+
+      setTimeout(() => {
+        sub.classList.add("hidden");
+        sub.classList.remove("page-view-enter-right");
+
+        // Slide main view back in from the left
+        main.classList.remove("hidden", "page-view-active");
+        main.classList.add("page-view-exit-left");
+        window.scrollTo({ top: 0, behavior: "instant" });
+
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            main.classList.remove("page-view-exit-left");
+            main.classList.add("page-view-active");
+          }, 20);
+        });
+      }, 250);
+    }
+
+    function copyEmail() {
+      navigator.clipboard.writeText("hemanthdadi3@gmail.com");
+      const txt = document.getElementById("copy-text");
+      const prev = txt.innerText;
+      txt.innerText = "COPIED!";
+      txt.classList.add("text-[#2F6BFF]");
+      setTimeout(() => {
+        txt.innerText = prev;
+        txt.classList.remove("text-[#2F6BFF]");
+      }, 2000);
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      document.getElementById("contact-form").classList.add("hidden");
+      document.getElementById("form-success").classList.remove("hidden");
+    }
+
+    // Initialize Default Slide
+    goToSlide(0, false);
+
+    // Auto-load subpage if specified in URL query
+    const urlParams = new URLSearchParams(window.location.search);
+    const subParam = urlParams.get('subpage');
+    if (subParam && systemsData[subParam]) {
+      showSubpage(subParam);
+    }
+  </script>
+  <script>
+    // Smooth scroll helper for full-page blocks
+    function scrollToBlock(id) {
+      showHomeView();
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // IntersectionObserver to synchronize active HUD dots and navbar tabs
+    const blockIds = ['hero', 'thesis', 'work', 'capabilities', 'research', 'contact'];
+    const blocks = blockIds.map(id => document.getElementById(id)).filter(Boolean);
+    const hudItems = document.querySelectorAll('.hud-item');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const scrollContainer = document.getElementById('scroll-container');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const activeId = entry.target.id;
+          
+          // Update HUD rail
+          hudItems.forEach(item => {
+            const target = item.getAttribute('data-target');
+            const dot = item.querySelector('.hud-dot');
+            const label = item.querySelector('.hud-label');
+            if (target === activeId) {
+              dot.className = 'hud-dot w-3 h-3 rounded-full bg-[#2F6BFF] shadow-[0_0_12px_rgba(47,107,255,0.7)] ring-2 ring-[#2F6BFF]/40';
+              label.classList.remove('opacity-0');
+            } else {
+              dot.className = 'hud-dot w-2 h-2 rounded-full bg-[rgba(216,203,179,0.25)] transition-all';
+              label.classList.add('opacity-0');
+            }
+          });
+
+          // Update Navbar
+          navLinks.forEach(link => {
+            const target = link.getAttribute('data-target');
+            if (target === activeId) {
+              link.classList.add('text-[#2F6BFF]', 'bg-[#181A20]');
+            } else {
+              link.classList.remove('text-[#2F6BFF]', 'bg-[#181A20]');
+            }
+          });
+        }
+      });
+    }, {
+      root: scrollContainer,
+      threshold: 0.5
+    });
+
+    blocks.forEach(b => observer.observe(b));
+
+    // Keyboard Page Navigation (Up/Down or PageUp/PageDown when not typing in form)
+    window.addEventListener('keydown', (e) => {
+      if (e.target && ['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        const currScroll = scrollContainer.scrollTop;
+        const vh = window.innerHeight;
+        scrollContainer.scrollBy({ top: vh, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        const vh = window.innerHeight;
+        scrollContainer.scrollBy({ top: -vh, behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>
